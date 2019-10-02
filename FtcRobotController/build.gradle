@@ -1,4 +1,6 @@
-//
+ext {
+    var = 28
+}//
 // build.gradle in FtcRobotController
 //
 apply plugin: 'com.android.library'
@@ -10,7 +12,7 @@ android {
         targetSdkVersion 26
     }
 
-    compileSdkVersion 28
+    compileSdkVersion var
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
