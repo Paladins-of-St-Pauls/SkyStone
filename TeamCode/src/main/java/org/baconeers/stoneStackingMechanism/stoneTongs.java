@@ -56,11 +56,13 @@ public class BasicOpMode_Linear extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    Servo gripServo;
-    Servo movementServo;
+    Servo gripServo; // Grips the stone
+    Servo movementServo; // Moves the stone tongs
 
-    boolean aButtonState; // Moves gripServo down
-    boolean bButtonState; // Moves gripServo up
+    boolean aCurrentState; // Moves gripServo down
+    boolean bCurrentState; // Moves gripServo up
+    boolean aPrevState; // Previous state for the a button
+    boolean bPrevState;// Previous state for the b button
 
     float servoPos = 0.0;
 
@@ -82,16 +84,20 @@ public class BasicOpMode_Linear extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            aButtonState = gamepad2.a;
-            bButtonState = gamepad2.b;
+            aCurrentState = gamepad2.a;
+            bCurrentState = gamepad2.b;
 
-            if (aButtonState) {
+
+            if (aCurrentState == true && aPrevState == false) {
                 servoPos = 0.5
                 gripServo.setPosition(servoPos)
-            } else if (bButtonState){
+            } else if (bCurrentState == true && bPrevState == false){
                 servoPos = 0.6;
                 gripServo.setPosition(servoPos)
             }
+
+            aPrevState = aCurrentState;
+            bPrevState = bCurrentState
 
 
 
