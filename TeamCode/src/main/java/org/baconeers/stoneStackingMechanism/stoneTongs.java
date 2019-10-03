@@ -46,7 +46,7 @@ import com.qualcomm.robotcore.util.Range;
  * This particular OpMode just executes a basic Tank Drive Teleop for a two wheeled robot
  * It includes all the skeletal structure that all linear OpModes contain.
  *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
+ * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
@@ -64,16 +64,19 @@ public class BasicOpMode_Linear extends LinearOpMode {
     boolean aPrevState; // Previous state for the a button
     boolean bPrevState;// Previous state for the b button
 
+    float servoPower = 0f;
     float servoPos = 0.0;
+
+    String tongStatus = "Up (deactivated)";
+
+    gripServo.setPosition(servoPos);
 
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        // Initialize the hardware variables. Note that the strings used here as parameters
-        // to 'get' must correspond to the names assigned during the robot configuration
-        // step (using the FTC Robot Controller app on the phone).
+        // Initialize the hardware variables
         gripServo = hardwareMap.get(Servo.class, "gripServo");
         movementServo = hardwareMap.get(Servo.class, "movementServo");
 
@@ -81,29 +84,34 @@ public class BasicOpMode_Linear extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
-        // run until the end of the match (driver presses STOP)
+        // Run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
+            // Move the stone tongs
+            servoPower = gamepad2.left_stick_x;
+            movementServo.setPower(servoPower);
+
+            // Grab/release the stone
             aCurrentState = gamepad2.a;
             bCurrentState = gamepad2.b;
 
-
             if (aCurrentState == true && aPrevState == false) {
-                servoPos = 0.5
-                gripServo.setPosition(servoPos)
+                servoPos = 0.5;
+                gripServo.setPosition(servoPos);
+                tongStatus = "Down (activated)"
             } else if (bCurrentState == true && bPrevState == false){
                 servoPos = 0.6;
-                gripServo.setPosition(servoPos)
+                gripServo.setPosition(servoPos);
+                tongStatus = "Up (deactivated)"
             }
 
             aPrevState = aCurrentState;
-            bPrevState = bCurrentState
+            bPrevState = bCurrentState;
 
-
-
-
-            // Show the elapsed game time and wheel power.
+            // Show the elapsed game time, servo power, and state of stone tongs.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
+            telemetry.addData("Servo", "Power " + servoPower)
+            telemetry.addData("Stone Tongs: " + tongStatus);
             telemetry.update();
         }
     }
