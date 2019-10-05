@@ -96,11 +96,11 @@ public class BasicOpMode_Linear extends LinearOpMode {
             bCurrentState = gamepad2.b;
 
             if (aCurrentState == true && aPrevState == false) {
-                servoPos = 0.5;
+                servoPos = 0.0;
                 gripServo.setPosition(servoPos);
                 tongStatus = "Down (activated)"
             } else if (bCurrentState == true && bPrevState == false){
-                servoPos = 0.6;
+                servoPos = 1.0;
                 gripServo.setPosition(servoPos);
                 tongStatus = "Up (deactivated)"
             }
