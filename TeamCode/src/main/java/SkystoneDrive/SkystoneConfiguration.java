@@ -1,10 +1,11 @@
 package SkystoneDrive;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.baconeers.common.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.RobotConfiguration;
 
 /**
  * It is assumed that there is a configuration that is currently activated on the robot controller
@@ -36,9 +37,9 @@ public class SkystoneConfiguration extends RobotConfiguration {
         backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
         backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
 
-        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
 
         frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

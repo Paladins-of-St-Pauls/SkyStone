@@ -1,23 +1,27 @@
 package SkystoneDrive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
+
+import org.baconeers.common.BaconComponent;
+import org.baconeers.common.BaconOpMode;
 
 /**
  * Created by Baconeers on 8/11/2018.
  */
-
-public class SkystoneDrive {
+public class SkystoneDrive extends BaconComponent {
     // members:
-    private OpMode opmode = null;
+    private BaconOpMode opmode =null;
     private SkystoneConfiguration config = null;
     public boolean buttonState = false;
     public boolean lastButtonState = false;
     public boolean state = false;
-    public boolean toggleFunction = false;
+   /* public boolean toggleFunction = false;
 
    public double toggle(){
-        buttonState = opmode.gamepad1.right_bumper;
+        buttonState = gamepad1.right_bumper;
         if (buttonState && !lastButtonState) {
             state = !state;
         }
@@ -40,9 +44,9 @@ public class SkystoneDrive {
         }
 
 
-   }
-       public SkystoneDrive(OpMode opmodeIn, SkystoneConfiguration configIn) {
-        super();
+   } */
+       public SkystoneDrive(BaconOpMode opmodeIn, SkystoneConfiguration configIn) {
+        super(opmodeIn);
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         opmode = opmodeIn;
@@ -89,10 +93,15 @@ public class SkystoneDrive {
         }
 
         // Send calculated power to wheels
-        config.frontLeftMotor.setPower(-frontLeftPower*toggle());
-        config.frontRightMotor.setPower(-frontRightPower*toggle());
-        config.backLeftMotor.setPower(-backLeftPower*toggle());
-        config.backRightMotor.setPower(-backRightPower*toggle());
+//        config.frontLeftMotor.setPower(-frontLeftPower*toggle());
+//        config.frontRightMotor.setPower(-frontRightPower*toggle());
+//        config.backLeftMotor.setPower(-backLeftPower*toggle());
+//        config.backRightMotor.setPower(-backRightPower*toggle());
+
+        config.frontLeftMotor.setPower(-frontLeftPower);
+        config.frontRightMotor.setPower(-frontRightPower);
+        config.backLeftMotor.setPower(-backLeftPower);
+        config.backRightMotor.setPower(-backRightPower);
 
         // Show the elapsed game time and wheel power.
         opmode.telemetry.addData("Motors", "front left (%.2f), front right (%.2f)",
