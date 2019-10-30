@@ -93,7 +93,7 @@ public class SkyStoneNavigation extends LinearOpMode {
     // NOTE: If you are running on a CONTROL HUB, with only one USB WebCam, you must select CAMERA_CHOICE = BACK; and PHONE_IS_PORTRAIT = false;
     //
     private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
-    private static final boolean PHONE_IS_PORTRAIT = false  ;
+    private static final boolean PHONE_IS_PORTRAIT = true;
 
     /*
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
@@ -108,7 +108,7 @@ public class SkyStoneNavigation extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "AZIbRmP/////AAABmYw35nzjUERol/TI1EhoEbsZ/pJtim9ZPKcOfNOmxYOuwoqWde0YtyqEFToSmrFTDt0dOHwCcJc/YBVinqOjRqbrEZQsT+yCZtt16+cpsvQdN1eM6cwbk4DAgW2Fj1+cFGoqGVxpyERgfEPddKKttlGgurnzTP7cLVEeFwYLpMWl2FL+M+4oHZrTbpIbX4VfBNcVB2SvLYmdMCriOPofYn+uRZhO2xDNTyofMAqLhMXi1o/BbrmO4f0jyP3NNSVZVoo1nbicXq3m+klJWlDDuokrrC6w3g+5Jr2QC89VKCjgiJLpvM24UOy5SZcS8ea/vwZc68mopwYKkiZFEDbugRU5ssVIt6SzWu8YjDpw2F5S";
 
     // Since ImageTarget trackables use mm to specifiy their dimensions, we must use mm for all the physical dimension.
     // We will define some constants and conversions here
