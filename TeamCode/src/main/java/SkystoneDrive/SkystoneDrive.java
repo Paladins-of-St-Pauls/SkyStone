@@ -1,10 +1,5 @@
 package SkystoneDrive;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
-
 import org.baconeers.common.BaconComponent;
 import org.baconeers.common.BaconOpMode;
 
@@ -18,6 +13,9 @@ public class SkystoneDrive extends BaconComponent {
     public boolean buttonState = false;
     public boolean lastButtonState = false;
     public boolean state = false;
+
+    MecanumDrivePower drivePower = new MecanumDrivePower();
+
    /* public boolean toggleFunction = false;
 
    public double toggle(){
@@ -45,6 +43,9 @@ public class SkystoneDrive extends BaconComponent {
 
 
    } */
+
+
+
        public SkystoneDrive(BaconOpMode opmodeIn, SkystoneConfiguration configIn) {
         super(opmodeIn);
         // Initialize the hardware variables. Note that the strings used here as parameters
@@ -54,6 +55,8 @@ public class SkystoneDrive extends BaconComponent {
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
+
+
     }
 
     public void update(){
@@ -61,53 +64,22 @@ public class SkystoneDrive extends BaconComponent {
         //When going forward the front and back wheels are going opposite directions
         //when turning it seems that some wheel might be going slower then others causing it to NOT turn on the centre
 
+        double forward = opmode.gamepad1.left_stick_y; //forward
+        double strafe_left  = opmode.gamepad1.left_stick_x; //strafe
+        double rotate_right = -opmode.gamepad1.right_stick_x; //turning
 
-        // Setup a variable for each drive wheel to save power level for telemetry
-        double frontLeftPower;
-        double frontRightPower;
-        double backLeftPower  ;
-        double backRightPower;
+        drivePower.setDrivePower(forward, strafe_left, rotate_right);
 
-        // Implement Mecanum drive using drive equations from Internet:
-        double left_y = opmode.gamepad1.left_stick_y; //forward
-        double strafe_left_x  = opmode.gamepad1.left_stick_x; //strafe
-        double right_x = -opmode.gamepad1.right_stick_x; //turning
-
-        if (left_y > 0.1 || left_y < -0.1) {
-            frontLeftPower = left_y;
-            backLeftPower   = left_y;
-            frontRightPower = left_y;
-            backRightPower = left_y;
-        }
-        else if (right_x > 0.1 || right_x < -0.1) {
-            frontLeftPower = right_x;
-            backLeftPower   = right_x;
-            frontRightPower = -right_x;
-            backRightPower = -right_x;
-        }
-        else {
-            frontLeftPower = Range.clip(left_y + strafe_left_x + right_x, -1.0, 1.0);
-            backLeftPower   = Range.clip(left_y - strafe_left_x + right_x, -1.0, 1.0);
-            frontRightPower = Range.clip(left_y - strafe_left_x - right_x, -1.0, 1.0);
-            backRightPower = Range.clip(left_y + strafe_left_x - right_x, -1.0, 1.0);
-        }
-
-        // Send calculated power to wheels
-//        config.frontLeftMotor.setPower(-frontLeftPower*toggle());
-//        config.frontRightMotor.setPower(-frontRightPower*toggle());
-//        config.backLeftMotor.setPower(-backLeftPower*toggle());
-//        config.backRightMotor.setPower(-backRightPower*toggle());
-
-        config.frontLeftMotor.setPower(-frontLeftPower);
-        config.frontRightMotor.setPower(-frontRightPower);
-        config.backLeftMotor.setPower(-backLeftPower);
-        config.backRightMotor.setPower(-backRightPower);
+        config.frontLeftMotor.setPower(-drivePower.frontLeftPower);
+        config.frontRightMotor.setPower(-drivePower.frontRightPower);
+        config.backLeftMotor.setPower(-drivePower.backLeftPower);
+        config.backRightMotor.setPower(-drivePower.backRightPower);
 
         // Show the elapsed game time and wheel power.
         opmode.telemetry.addData("Motors", "front left (%.2f), front right (%.2f)",
-                frontLeftPower, frontRightPower);
+                drivePower.frontLeftPower, drivePower.frontRightPower);
         opmode.telemetry.addData("Motors", "rear left (%.2f), rear right (%.2f)",
-                backLeftPower  , backRightPower);
+                drivePower.backLeftPower  , drivePower.backRightPower);
         opmode.telemetry.update();
 
     }
