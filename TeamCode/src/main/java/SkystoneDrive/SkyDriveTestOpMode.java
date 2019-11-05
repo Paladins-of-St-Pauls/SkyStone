@@ -26,6 +26,7 @@ public enum Direction{
 
 double [] speeds = {0.3,0.7,1.0};
 double [] time = {1.0,3.0,5.0};
+Direction lowercaseDirection = Direction.NORTH;
 
     @Override
     protected void onInit() {
@@ -38,6 +39,7 @@ double [] time = {1.0,3.0,5.0};
     @Override
     protected void activeLoop() throws InterruptedException {
         drive.update();
+
 
 //        if (config.touchSensor.isPressed()) {
 //            telemetry.addLine("Touch pressed");

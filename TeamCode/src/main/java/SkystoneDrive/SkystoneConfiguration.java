@@ -37,10 +37,10 @@ public class SkystoneConfiguration extends RobotConfiguration {
         backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
         backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
 
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
 
         frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
