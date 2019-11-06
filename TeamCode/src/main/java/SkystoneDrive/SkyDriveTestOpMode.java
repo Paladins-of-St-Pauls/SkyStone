@@ -105,7 +105,7 @@ public class SkyDriveTestOpMode extends BaconOpMode {
 
         if (gamepad1.a) {
             running = true;
-            start_time_secs = System.nanoTime() * NANOS_IN_SECONDS;
+            start_time_secs = System.nanoTime() / NANOS_IN_SECONDS;
         }
 
         if (gamepad1.b) {
@@ -117,7 +117,7 @@ public class SkyDriveTestOpMode extends BaconOpMode {
         double speed_factor = speeds[speed_index];
         double time = times[time_index];
 
-        double current_time = System.nanoTime() * NANOS_IN_SECONDS;
+        double current_time = System.nanoTime() / NANOS_IN_SECONDS;
         if (current_time > time + start_time_secs) {
             running = false;
             start_time_secs = 0.0;
@@ -133,8 +133,8 @@ public class SkyDriveTestOpMode extends BaconOpMode {
         }
 
         directionItem.setValue(direction);
-        speedItem.setValue("%0.02f", speed_factor);
-        timeItem.setValue("%0.02f", time);
+        speedItem.setValue("%.2f", speed_factor);
+        timeItem.setValue("%.2f", time);
         mecanumDrive.update();
     }
 }
