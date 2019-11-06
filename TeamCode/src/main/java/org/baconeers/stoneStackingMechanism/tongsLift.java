@@ -29,12 +29,10 @@
 
 package org.baconeers.stoneStackingMechanism;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -48,25 +46,17 @@ import com.qualcomm.robotcore.util.Range;
  * This particular OpMode just executes a basic Tank Drive Teleop for a two wheeled robot
  * It includes all the skeletal structure that all linear OpModes contain.
  *
- * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
+ * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="stoneTongs", group="Linear Opmode")
+@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@Disabled
+public class tongsLift extends LinearOpMode {
 
-public class stoneTongs extends LinearOpMode {
-
-    // Declare OpMode members
+    // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private Servo gripServo; // Grips the stone
-    private CRServo movementServo; // Moves the stone tongs
 
-    private boolean aPrevState = false; // Previous state for the a button
-    private boolean bPrevState = false;// Previous state for the b button
-
-    private double servoPos = 0.0;
-
-    private String tongStatus = "Up (deactivated)";
 
     @Override
     public void runOpMode() {
@@ -74,43 +64,18 @@ public class stoneTongs extends LinearOpMode {
         telemetry.update();
 
         // Initialize the hardware variables
-        gripServo = hardwareMap.get(Servo.class, "gripServo");
-        movementServo = hardwareMap.get(CRServo.class, "movementServo");
 
-        gripServo.setPosition(servoPos);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
 
-        // Run until the end of the match (driver presses STOP)
+        // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            // Move the stone tongs
-            double servoPower = gamepad2.left_stick_x;
-            movementServo.setPower(servoPower);
 
-            // Grab/release the stone
-            boolean aCurrentState = gamepad2.a;
-            boolean bCurrentState = gamepad2.b;
-
-            if (aCurrentState && !aPrevState) {
-                servoPos = 0.0;
-                gripServo.setPosition(servoPos);
-                tongStatus = "Down (activated)";
-            } else if (bCurrentState && !bPrevState){
-                servoPos = 1.0;
-                gripServo.setPosition(servoPos);
-                tongStatus = "Up (deactivated)";
-            }
-
-            aPrevState = aCurrentState;
-            bPrevState = bCurrentState;
-
-            // Show the elapsed game time, servo power, and state of stone tongs.
+            // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Servo", "Power: " + servoPower);
-            telemetry.addData("Tongs Status", "Stone Tongs: " + tongStatus);
             telemetry.update();
         }
     }
