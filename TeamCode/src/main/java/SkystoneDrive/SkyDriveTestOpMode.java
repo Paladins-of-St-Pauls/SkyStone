@@ -16,6 +16,15 @@ public class SkyDriveTestOpMode extends BaconOpMode {
     private Telemetry.Item speedItem = null;
     private Telemetry.Item timeItem = null;
 
+    private boolean dpad_up_last = false;
+    private boolean dpad_down_last = false;
+    private boolean dpad_left_last = false;
+    private boolean dpad_right_last = false;
+    private boolean right_bumper_last = false;
+    private boolean left_bumper_last = false;
+    private boolean a_last = false;
+    private boolean b_last = false;
+
 
     /**
      * the number of nanoseconds in a second
@@ -31,8 +40,8 @@ public class SkyDriveTestOpMode extends BaconOpMode {
         SOUTHWEST(-1.0, -1.0, 0.0),
         WEST(0.0, -1.0, 0.0),
         NORTHWEST(1.0, -1.0, 0.0),
-        ROTATE_RIGHT(1.0, 0.0, 1.0),
-        ROTATE_LEFT(1.0, 0.0, -1.0);
+        ROTATE_RIGHT(0.0, 0.0, 1.0),
+        ROTATE_LEFT(0.0, 0.0, -1.0);
 
         double forward;
         double right;
@@ -45,7 +54,7 @@ public class SkyDriveTestOpMode extends BaconOpMode {
         }
     }
 
-    double[] speeds = {0.3, 0.7, 1.0};
+    double[] speeds = {0.3, 0.5, 0.7, 0.8, 1.0};
     double[] times = {1.0, 3.0, 5.0};
 
     int speed_index = 0;
@@ -77,41 +86,50 @@ public class SkyDriveTestOpMode extends BaconOpMode {
     protected void activeLoop() throws InterruptedException {
 
         // Adjust the speed index using dpad up/down
-        if (gamepad1.dpad_up) {
+        if (!dpad_up_last && gamepad1.dpad_up) {
             speed_index++;
         }
-        if (gamepad1.dpad_down) {
+        dpad_up_last = gamepad1.dpad_up;
+
+        if (!dpad_down_last && gamepad1.dpad_down) {
             speed_index--;
         }
+        dpad_down_last = gamepad1.dpad_down;
         speed_index = Range.clip(speed_index, 0, speeds.length - 1);
 
         // Adjust the time index using dpad right/right
-        if (gamepad1.dpad_right) {
+        if (!dpad_right_last && gamepad1.dpad_right) {
             time_index++;
         }
-        if (gamepad1.dpad_left) {
+        dpad_right_last = gamepad1.dpad_right;
+        if (!dpad_left_last && gamepad1.dpad_left) {
             time_index--;
         }
+        dpad_left_last = gamepad1.dpad_left;
         time_index = Range.clip(time_index, 0, times.length - 1);
 
         // Adjust the direction index using right/right shoulder buttons
-        if (gamepad1.right_bumper) {
+        if (!right_bumper_last && gamepad1.right_bumper) {
             direction_index++;
         }
-        if (gamepad1.left_bumper) {
+        right_bumper_last = gamepad1.right_bumper;
+        if (!left_bumper_last && gamepad1.left_bumper) {
             direction_index--;
         }
+        left_bumper_last = gamepad1.left_bumper;
         direction_index = Range.clip(direction_index, 0, Direction.values().length - 1);
 
-        if (gamepad1.a) {
+        if (!a_last && gamepad1.a) {
             running = true;
             start_time_secs = System.nanoTime() / NANOS_IN_SECONDS;
         }
+        a_last = gamepad1.a;
 
-        if (gamepad1.b) {
+        if (!b_last && gamepad1.b) {
             running = false;
             start_time_secs = 0.0;
         }
+        b_last = gamepad1.b;
 
         Direction direction = Direction.values()[direction_index];
         double speed_factor = speeds[speed_index];
