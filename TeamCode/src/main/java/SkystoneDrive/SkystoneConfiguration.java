@@ -1,8 +1,10 @@
 package SkystoneDrive;
 
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.baconeers.common.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -19,6 +21,9 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public DcMotor frontRightMotor = null;
     public DcMotor backLeftMotor = null;
     public DcMotor backRightMotor = null;
+    public Servo gripServo = null; // Grips the stone
+    public CRServo movementServo = null; // Moves the stone tongs
+    public DcMotor liftMotor = null;
 
 
     /**
@@ -36,6 +41,9 @@ public class SkystoneConfiguration extends RobotConfiguration {
         frontRightMotor = hardwareMap.get(DcMotor.class, "FrontRightMotor");
         backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
         backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
+        gripServo = hardwareMap.get(Servo.class, "gripServo");
+        movementServo = hardwareMap.get(CRServo.class, "movementServo");
+        liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
 
         frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
