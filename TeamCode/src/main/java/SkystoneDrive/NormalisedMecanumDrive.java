@@ -45,7 +45,7 @@ public class NormalisedMecanumDrive extends BaconComponent {
         this.showTelemetry = showTelemetry;
 
         if (showTelemetry) {
-            item = opMode.telemetry.addData("Mecanum", "Forward: %0.02f, Strafe: %0.02f, Rotate: %0.02f", speedX, speedY, speedR);
+            item = opMode.telemetry.addData("Mecanum", "Forward: %.2f, Strafe: %0.02f, Rotate: %.2f", speedX, speedY, speedR);
             item.setRetained(true);
         } else {
             item = null;
@@ -82,7 +82,7 @@ public class NormalisedMecanumDrive extends BaconComponent {
                 break;
         }
         if (item != null) {
-            item.setValue("Forward: %.02f, Strafe: %.02f, Rotate: %.02f", speedX, speedY, speedR);
+            item.setValue("Forward: %.2f, Strafe: %.2f, Rotate: %.2f", speedX, speedY, speedR);
         }
     }
 
