@@ -3,6 +3,7 @@ package org.baconeers.Tasks;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
+import org.baconeers.stoneStackingMechanism.Lift;
 
 import java.util.ArrayDeque;
 
@@ -29,7 +30,8 @@ public class DebugOpMode extends BaconOpMode {
         debug.add(new MotorTestTask(this, 2.0, config, 0, 1, 0, 0));
         debug.add(new MotorTestTask(this, 2.0, config, 0, 0, 1, 0));
         debug.add(new MotorTestTask(this, 2.0, config, 0, 0, 0, 1));
-        
+        debug.add(new LiftTask(this, 2.0, config, 1.0));
+        debug.add(new LiftTask(this, 2.0, config, -1.0));
 
     }
 
