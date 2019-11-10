@@ -129,7 +129,8 @@ public class SkyDriveTestOpMode extends BaconOpMode {
                     direction.rotate * speed_factor);
 
         } else {
-            mecanumDrive.setSpeedXYR(0.0,0.0,0.0);
+            mecanumDrive.setSpeedXYR(gamepad1.left_stick_y, gamepad1.left_stick_x , gamepad1.right_stick_x );
+
         }
 
         directionItem.setValue(direction);
