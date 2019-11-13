@@ -2,15 +2,19 @@ package org.baconeers.Tasks;
 
 import org.baconeers.common.BaconOpMode;
 
+import java.util.ArrayDeque;
+
 import SkystoneDrive.SkystoneConfiguration;
 
-public class TongsTask extends BaseTask implements Task {
+public class DetectSkystoneTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
+    private final ArrayDeque<Task> tasks;
 
-    public TongsTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double liftPower) {
+    public DetectSkystoneTask(BaconOpMode opMode, double time, SkystoneConfiguration config, ArrayDeque<Task> tasks) {
         super(opMode, time);
         this.config = config;
+        this.tasks = tasks;
 
     }
 
@@ -21,10 +25,10 @@ public class TongsTask extends BaseTask implements Task {
     @Override
     public void run() {
         if (isFinished()) {
-            update();
+
             return;
         }
-        update();
+        // code here
     }
 
 }
