@@ -24,7 +24,7 @@ public class StoneTongsClass extends BaconComponent {
 
     public void update() {
         // Move the stone tongs
-        double servoPower = opmode.gamepad2.left_stick_x;
+        double servoPower = opmode.gamepad2.right_stick_x;
         config.movementServo.setPower(servoPower);
 
         // Grab/release the stone
