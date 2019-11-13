@@ -17,7 +17,7 @@ public class LiftTask extends BaseTask implements Task {
     }
 
     void update() {
-        config.liftMotor.setPower(liftPower);
+        /* config.liftMotor.setPower(liftPower); */
     }
 
     @Override
