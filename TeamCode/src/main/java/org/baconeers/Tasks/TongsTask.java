@@ -4,12 +4,12 @@ import org.baconeers.common.BaconOpMode;
 
 import SkystoneDrive.SkystoneConfiguration;
 
-public class LiftTask extends BaseTask implements Task {
+public class TongsTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
     private double liftPower;
 
-    public LiftTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double liftPower) {
+    public TongsTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double liftPower) {
         super(opMode, time);
         this.config = config;
         this.liftPower = liftPower;
@@ -17,13 +17,12 @@ public class LiftTask extends BaseTask implements Task {
     }
 
     void update() {
-        config.liftMotor.setPower(liftPower);
+
     }
 
     @Override
     public void run() {
         if (isFinished()) {
-            liftPower = 0.0;
             update();
             return;
         }
