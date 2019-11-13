@@ -12,6 +12,7 @@ public class StackingOpMode extends BaconOpMode {
     private SkystoneConfiguration config;
     private StoneTongsClass tongs;
     private TongsLiftClass lift;
+    private SkystoneDrive drive;
 
     @Override
     protected void onInit() {
@@ -19,11 +20,13 @@ public class StackingOpMode extends BaconOpMode {
 
        tongs = new StoneTongsClass(this, config);
        lift = new TongsLiftClass(this, config);
+       drive = new SkystoneDrive(this, config);
 
     }
 
     @Override
     protected void activeLoop() throws InterruptedException {
+        drive.update();
         tongs.update();
         lift.update();
         

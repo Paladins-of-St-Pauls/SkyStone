@@ -41,9 +41,9 @@ public class SkystoneConfiguration extends RobotConfiguration {
         frontRightMotor = hardwareMap.get(DcMotor.class, "FrontRightMotor");
         backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
         backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
-//        gripServo = hardwareMap.get(Servo.class, "gripServo");
-//        movementServo = hardwareMap.get(CRServo.class, "movementServo");
-//        liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
+        gripServo = hardwareMap.get(Servo.class, "gripServo");
+        movementServo = hardwareMap.get(CRServo.class, "movementServo");
+        liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
 
         frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
