@@ -3,7 +3,7 @@ package org.baconeers.Tasks;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
-import org.baconeers.stoneStackingMechanism.Lift;
+
 
 import java.util.ArrayDeque;
 

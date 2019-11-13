@@ -1,7 +1,6 @@
 package org.baconeers.Tasks;
 
 import org.baconeers.common.BaconOpMode;
-import org.baconeers.stoneStackingMechanism.Lift;
 
 import SkystoneDrive.NormalisedMecanumDrive;
 import SkystoneDrive.SkystoneConfiguration;
