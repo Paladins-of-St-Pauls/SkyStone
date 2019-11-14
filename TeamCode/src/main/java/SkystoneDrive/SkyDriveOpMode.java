@@ -10,6 +10,7 @@ import org.baconeers.testbot.TestBotConfiguration;
 public class SkyDriveOpMode extends BaconOpMode {
     private SkystoneConfiguration config;
     private SkystoneDrive drive;
+    private NormalisedMecanumDrive mecanumDrive = null;
 
     @Override
     protected void onInit() {
@@ -22,6 +23,9 @@ public class SkyDriveOpMode extends BaconOpMode {
     @Override
     protected void activeLoop() throws InterruptedException {
         drive.update();
+        mecanumDrive.setSpeedXYR(-gamepad1.left_stick_y, gamepad1.left_stick_x , gamepad1.right_stick_x );
+
+        mecanumDrive.update();
 
 //        if (config.touchSensor.isPressed()) {
 //            telemetry.addLine("Touch pressed");

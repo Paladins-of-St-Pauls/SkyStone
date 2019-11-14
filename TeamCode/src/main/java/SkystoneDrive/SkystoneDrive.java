@@ -13,6 +13,7 @@ public class SkystoneDrive extends BaconComponent {
     public boolean buttonState = false;
     public boolean lastButtonState = false;
     public boolean state = false;
+    private NormalisedMecanumDrive mecanumDrive = null;
 
     MecanumDrivePower drivePower = new MecanumDrivePower();
 

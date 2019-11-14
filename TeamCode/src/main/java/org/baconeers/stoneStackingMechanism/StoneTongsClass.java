@@ -33,11 +33,11 @@ public class StoneTongsClass extends BaconComponent {
 
         double servoPos;
         if (aCurrentState) {
-            servoPos = 0.0;
+            servoPos = 0.7;
             config.gripServo.setPosition(servoPos);
             tongStatus = "Down (activated)";
         } else if (bCurrentState){
-            servoPos = 1.0;
+            servoPos = 0.0;
             config.gripServo.setPosition(servoPos);
             tongStatus = "Up (deactivated)";
         }
