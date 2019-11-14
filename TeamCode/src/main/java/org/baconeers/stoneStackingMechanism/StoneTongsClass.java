@@ -24,7 +24,7 @@ public class StoneTongsClass extends BaconComponent {
 
     public void update() {
         // Move the stone tongs
-        double servoPower = opmode.gamepad2.right_stick_x;
+        double servoPower = opmode.gamepad2.right_stick_x / 2;
         config.movementServo.setPower(servoPower);
 
         // Grab/release the stone
@@ -32,11 +32,11 @@ public class StoneTongsClass extends BaconComponent {
         boolean bCurrentState = opmode.gamepad2.b;
 
         double servoPos;
-        if (aCurrentState && !aPrevState) {
+        if (aCurrentState) {
             servoPos = 0.0;
             config.gripServo.setPosition(servoPos);
             tongStatus = "Down (activated)";
-        } else if (bCurrentState && !bPrevState){
+        } else if (bCurrentState){
             servoPos = 1.0;
             config.gripServo.setPosition(servoPos);
             tongStatus = "Up (deactivated)";
