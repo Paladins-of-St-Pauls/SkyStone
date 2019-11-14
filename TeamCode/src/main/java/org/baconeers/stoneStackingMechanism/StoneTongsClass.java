@@ -10,8 +10,8 @@ public class StoneTongsClass extends BaconComponent {
     private BaconOpMode opmode;
     private SkystoneConfiguration config;
 
-    private boolean aPrevState = false; // Previous state for the a button
-    private boolean bPrevState = false;// Previous state for the b button
+    //private boolean aPrevState = false; // Previous state for the a button
+    //private boolean bPrevState = false;// Previous state for the b button
 
     private String tongStatus = "Up (deactivated)";
 
@@ -42,8 +42,8 @@ public class StoneTongsClass extends BaconComponent {
             tongStatus = "Up (deactivated)";
         }
 
-        aPrevState = aCurrentState;
-        bPrevState = bCurrentState;
+        //aPrevState = aCurrentState;
+        //bPrevState = bCurrentState;
 
         opmode.telemetry.addData("Servo", "Power: " + servoPower);
         opmode.telemetry.addData("Tongs Status", "Stone Tongs: " + tongStatus);
