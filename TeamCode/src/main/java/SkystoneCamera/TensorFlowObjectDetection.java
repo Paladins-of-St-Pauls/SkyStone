@@ -165,6 +165,6 @@ public class TensorFlowObjectDetection extends LinearOpMode {
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
         tfodParameters.minimumConfidence = 0.6;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, SKYSTONE);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, STONE, SKYSTONE);
     }
 }
