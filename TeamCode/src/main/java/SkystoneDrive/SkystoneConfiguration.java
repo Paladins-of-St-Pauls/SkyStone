@@ -25,7 +25,6 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public CRServo movementServo = null; // Moves the stone tongs
     public DcMotor liftMotor = null;
 
-
     /**
      * Assign your class instance variables to the saved device names in the hardware map
      *
@@ -36,35 +35,63 @@ public class SkystoneConfiguration extends RobotConfiguration {
     protected void init(HardwareMap hardwareMap, Telemetry telemetry) {
         setTelemetry(telemetry);
 
+        try {
+            frontLeftMotor  = hardwareMap.get(DcMotor.class, "FrontLeftMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            frontRightMotor = hardwareMap.get(DcMotor.class, "FrontRightMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            gripServo = hardwareMap.get(Servo.class, "gripServo");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            movementServo = hardwareMap.get(CRServo.class, "movementServo");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        frontLeftMotor  = hardwareMap.get(DcMotor.class, "FrontLeftMotor");
-        frontRightMotor = hardwareMap.get(DcMotor.class, "FrontRightMotor");
-        backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
-        backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
-        gripServo = hardwareMap.get(Servo.class, "gripServo");
-        movementServo = hardwareMap.get(CRServo.class, "movementServo");
+        if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
+            frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+            frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
+            backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+            backRightMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
+            frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            frontRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            backLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            backRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
+            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        backLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        backRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
 
 
         telemetry.addData("Initialized","True");
