@@ -24,6 +24,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Servo gripServo = null; // Grips the stone
     public CRServo movementServo = null; // Moves the stone tongs
     public DcMotor liftMotor = null;
+    public Servo CapStoneServo = null; // Capstone servo
+    public Servo HarvesterServoRight = null;
+    public Servo HarvesterServoLeft = null;
+    public Servo FoundationServo = null;
+
+
 
     /**
      * Assign your class instance variables to the saved device names in the hardware map
@@ -93,6 +99,10 @@ public class SkystoneConfiguration extends RobotConfiguration {
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
 
+        CapStoneServo = hardwareMap.get (Servo.class, "CapStone");
+        HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
+        HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
+        FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
 
         telemetry.addData("Initialized","True");
         telemetry.update();
