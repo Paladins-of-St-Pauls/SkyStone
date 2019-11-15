@@ -24,6 +24,11 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Servo gripServo = null; // Grips the stone
     public CRServo movementServo = null; // Moves the stone tongs
     public DcMotor liftMotor = null;
+    public Servo CapStoneServo = null; // Capstone servo
+    public Servo HarvesterServoRight = null;
+    public Servo HarvesterServoLeft = null;
+    public Servo FoundationServo = null;
+
 
 
     /**
@@ -43,6 +48,10 @@ public class SkystoneConfiguration extends RobotConfiguration {
         backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
         gripServo = hardwareMap.get(Servo.class, "gripServo");
         movementServo = hardwareMap.get(CRServo.class, "movementServo");
+        CapStoneServo = hardwareMap.get (Servo.class, "CapStone");
+        HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
+        HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
+        FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
 
         liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
 
