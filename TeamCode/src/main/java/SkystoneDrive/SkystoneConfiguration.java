@@ -21,7 +21,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public DcMotor frontRightMotor = null;
     public DcMotor backLeftMotor = null;
     public DcMotor backRightMotor = null;
-    public Servo gripServo = null; // Grips the stone
+    public CRServo gripServo = null; // Grips the stone
     public CRServo movementServo = null; // Moves the stone tongs
     public DcMotor liftMotor = null;
     public Servo CapStoneServo = null; // Capstone servo
@@ -62,7 +62,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
             e.printStackTrace();
         }
         try {
-            gripServo = hardwareMap.get(Servo.class, "gripServo");
+            gripServo = hardwareMap.get(CRServo.class, "gripServo");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,10 +99,26 @@ public class SkystoneConfiguration extends RobotConfiguration {
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
 
-        CapStoneServo = hardwareMap.get (Servo.class, "CapStone");
-        HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
-        HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
-        FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
+        try {
+            CapStoneServo = hardwareMap.get (Servo.class, "CapStone");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         telemetry.addData("Initialized","True");
         telemetry.update();
