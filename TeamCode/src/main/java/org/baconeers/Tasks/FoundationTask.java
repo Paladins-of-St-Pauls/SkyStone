@@ -25,7 +25,7 @@ public class FoundationTask extends BaseTask implements Task {
     @Override
     public void run() {
         if (isFinished()) {
-            FoundationPower = 0;
+            FoundationPower = -0.2;
             update();
             return;
         }
