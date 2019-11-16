@@ -74,7 +74,7 @@ public class GamePadToggleDualMotor extends BaconComponent {
             motorOn = !motorOn;
             float power = motorOn ? motorPower : 0.0f;
 
-            if (reversePressed) {
+            if (!reversePressed) {
                 power = -power;
             }
 
