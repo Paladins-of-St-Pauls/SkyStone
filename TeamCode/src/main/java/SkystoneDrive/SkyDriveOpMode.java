@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
 import org.baconeers.common.ButtonControl;
+import org.baconeers.common.GamePadCRServo;
 import org.baconeers.common.GamePadSteerDrive;
 import org.baconeers.common.GamePadToggle2positionServo;
 import org.baconeers.common.GamePadToggleDualMotor;
@@ -18,6 +19,7 @@ public class SkyDriveOpMode extends BaconOpMode {
     private TongsLiftClass lift;
     private NormalisedMecanumDrive mecanumDrive = null;
     GamePadToggleDualMotor harvester = null;
+    GamePadCRServo foundationServo = null;
 
     GamePadToggle2positionServo capstoneMech = null;
 
@@ -58,7 +60,15 @@ public class SkyDriveOpMode extends BaconOpMode {
             capstoneMech = new GamePadToggle2positionServo(this ,gamepad2, config.CapStoneServo,
                     ButtonControl.DPAD_LEFT, ButtonControl.DPAD_RIGHT, 0.2, 0.5);
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("Failed to initialise capstoneMech");
+        }
+
+        try {
+            foundationServo = new GamePadCRServo(this, gamepad1, config.FoundationServo,
+                    ButtonControl.A, ButtonControl.B, 0.5f);
+        } catch (Exception e) {
+            telemetry.addLine("Failed to initialise foundationServo");
+
         }
     }
 
@@ -84,6 +94,10 @@ public class SkyDriveOpMode extends BaconOpMode {
 
         if (capstoneMech != null) {
             capstoneMech.update();
+        }
+
+        if (foundationServo != null) {
+            foundationServo.update();
         }
 
 //        if (config.touchSensor.isPressed()) {
