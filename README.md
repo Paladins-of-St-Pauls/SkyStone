@@ -70,14 +70,14 @@ Version 5.3 (20191004-112306)
     * A warning is shown if a user selects a TFOD sample, but their device is not compatible
     * Warning messages in a Blocks op mode are now visible by default.
 * Adds goBILDA 5201 and 5202 motors to Robot Configurator
-* Adds PIDF Annotation values to AndyMark, goBILDA and TETRIX motor configurations.
+* Adds PIDF Annotation values to AndyMark, goBILDA and TETRIX motor1 configurations.
     This has the effect of causing the RUN_USING_ENCODERS and RUN_TO_POSITION modes to use 
     PIDF vs PID closed loop control on these motors.  This should provide more responsive, yet stable, speed control.  
     PIDF adds Feedforward control to the basic PID control loop.
-    Feedforward is useful when controlling a motor's speed because it "anticipates" how much the control voltage 
+    Feedforward is useful when controlling a motor1's speed because it "anticipates" how much the control voltage
     must change to achieve a new speed set-point, rather than requiring the integrated error to change sufficiently. 
-    The PIDF values were chosen to provide responsive, yet stable, speed control on a lightly loaded motor.
-    The more heavily a motor is loaded (drag or friction), the more noticable the PIDF improvement will be.
+    The PIDF values were chosen to provide responsive, yet stable, speed control on a lightly loaded motor1.
+    The more heavily a motor1 is loaded (drag or friction), the more noticable the PIDF improvement will be.
 * Fixes startup crash on Android 10
 * Fixes [ftc_app issue #712](https://github.com/ftctechnh/ftc_app/issues/712) (thanks to FROGbots-4634)
 * Fixes [ftc_app issue #542](https://github.com/ftctechnh/ftc_app/issues/542)
@@ -182,7 +182,7 @@ Version 4.2 (built on 18.10.30)
      - Internet connectivity is required for the first build so the appropriate files can be downloaded from the Google repository.
      - Users should not need to be connected to the Internet for subsequent builds.
      - This should also fix buid issue where Android Studio would complain that it "Could not find com.android.tools.lint:lint-gradle:26.1.4" (or similar).
- * Added support for REV Spark Mini motor controller as part of the configuration menu for a servo/PWM port on the REV Expansion Hub.
+ * Added support for REV Spark Mini motor1 controller as part of the configuration menu for a servo/PWM port on the REV Expansion Hub.
  * Provide examples for playing audio files in an Op Mode.
  * Block Development Tool Changes
      - Includes a fix for a problem with the Velocity blocks that were reported in the FTC Technology forum (Blocks Programming subforum).
@@ -224,12 +224,12 @@ Changes include:
 	 + FTC Tech Team is investigating options to mitigate this issue with the phone-based Robot Controllers.
     - Updated sample Vuforia Navigation and VuMark Op Modes to demonstrate how to use an internal phone-based camera and an external UVC webcam.    
 
- * Support for improved motor control.
-    - REV Robotics Expansion Hub firmware 1.8 and greater will support a feed forward mechanism for closed loop motor control.
+ * Support for improved motor1 control.
+    - REV Robotics Expansion Hub firmware 1.8 and greater will support a feed forward mechanism for closed loop motor1 control.
     - FTC SDK has been modified to support PIDF coefficients (proportional, integral, derivative, and feed forward).
     - FTC Blocks development tool modified to include PIDF programming blocks.
     - Deprecated older PID-related methods and variables.
-    - REV's 1.8.x PIDF-related changes provide a more linear and accurate way to control a motor.
+    - REV's 1.8.x PIDF-related changes provide a more linear and accurate way to control a motor1.
 
  * Wireless
     - Added 5GHz support for wireless channel changing for those devices that support it.
@@ -257,7 +257,7 @@ Changes include:
     - Fixed errors with string and list indices in blocks export to java.
     - Support for USB connected UVC webcams.
     - Refactored optimized Blocks Vuforia code to support Rover Ruckus image targets.
-    - Added programming blocks to support PIDF (proportional, integral, derivative and feed forward) motor control.
+    - Added programming blocks to support PIDF (proportional, integral, derivative and feed forward) motor1 control.
     - Added formatting options (under Telemetry and Miscellaneous categories) so user can set how many decimal places to display a numerical value.
     - Support to play audio files (which are uploaded through Blocks web interface) on Driver Station in addition to the Robot Controller.
     - Fixed bug with Download Image of Blocks feature.
@@ -265,9 +265,9 @@ Changes include:
     - Support for REV Robotics 2m Distance Sensor.
     - Added support for a REV Touch Sensor (no longer have to configure as a generic digital device).
     - Added blocks for DcMotorEx methods.
-        + These are enhanced methods that you can use when supported by the motor controller hardware.
+        + These are enhanced methods that you can use when supported by the motor1 controller hardware.
 	+ The REV Robotics Expansion Hub supports these enhanced methods.
-	+ Enhanced methods include methods to get/set motor velocity (in encoder pulses per second), get/set PIDF coefficients, etc..
+	+ Enhanced methods include methods to get/set motor1 velocity (in encoder pulses per second), get/set PIDF coefficients, etc..
 
  * Modest Improvements in Logging
     - Decrease frequency of battery checker voltage statements.
@@ -439,7 +439,7 @@ Version 3.10 (built on 17.05.09)
 
 This version of the software provides support for the REV Robotics Expansion Hub.  This version also includes improvements in the USB communication layer in an effort to enhance system resiliency.  If you were using a 2.x version of the software previously, updating to version 3.1 requires that you also update your Driver Station software in addition to updating the Robot Controller software.
 
-Also note that in version 3.10 software, the setMaxSpeed and getMaxSpeed methods are no longer available (not deprecated, they have been removed from the SDK). Also note that the the new 3.x software incorporates motor profiles that a user can select as he/she configures the robot.
+Also note that in version 3.10 software, the setMaxSpeed and getMaxSpeed methods are no longer available (not deprecated, they have been removed from the SDK). Also note that the the new 3.x software incorporates motor1 profiles that a user can select as he/she configures the robot.
 
 Changes include:
  * Blocks changes
@@ -456,7 +456,7 @@ Additional Notes Regarding Version 3.00 (built on 17.04.13)
 In addition to the release changes listed below (see section labeled "Version 3.00 (built on 17.04.013)"), version 3.00 has the following important changes:
 
 1. Version 3.00 software uses a new version of the FTC Robocol (robot protocol).  If you upgrade to v3.0 on the Robot Controller and/or Android Studio side, you must also upgrade the Driver Station software to match the new Robocol.
-2. Version 3.00 software removes the setMaxSpeed and getMaxSpeed methods from the DcMotor class.  If you have an op mode that formerly used these methods, you will need to remove the references/calls to these methods.  Instead, v3.0 provides the max speed information through the use of motor profiles that are selected by the user during robot configuration.
+2. Version 3.00 software removes the setMaxSpeed and getMaxSpeed methods from the DcMotor class.  If you have an op mode that formerly used these methods, you will need to remove the references/calls to these methods.  Instead, v3.0 provides the max speed information through the use of motor1 profiles that are selected by the user during robot configuration.
 3. Version 3.00 software currently does not have a mechanism to disable extra i2c sensors.  We hope to re-introduce this function with a release in the near future.
 
 **************************************************************************************
@@ -476,7 +476,7 @@ Please note, however, that version 3.00 is considered "alpha" code.  This code i
 Changes include:
  * Major rework of sensor-related infrastructure.  Includes rewriting sensor classes to implement synchronous I2C communication.
  * Fix to reset Autonomous timer back to 30 seconds.
- * Implementation of specific motor profiles for approved 12V motors (includes Tetrix, AndyMark, Matrix and REV models).
+ * Implementation of specific motor1 profiles for approved 12V motors (includes Tetrix, AndyMark, Matrix and REV models).
  * Modest improvements to enhance Wi-Fi P2P pairing.
  * Fixes telemetry log addition race.
  * Publishes all the sources (not just a select few).
@@ -681,12 +681,12 @@ Version 2.00 (released on 16.08.19)
  * Changes in the Android SDK, JDK and build tool requirements (minsdk=19, java 1.7, build tools 23.0.3).
  * Standardized units in analog input.
  * Cleaned up code for existing analog sensor classes.
- * setChannelMode and getChannelMode were REMOVED from the DcMotorController class.  This is important - we no longer set the motor modes through the motor controller.
+ * setChannelMode and getChannelMode were REMOVED from the DcMotorController class.  This is important - we no longer set the motor1 modes through the motor1 controller.
  * setMode and getMode were added to the DcMotor class.  
  * ContinuousRotationServo class has been added to the FTC SDK.
  * Range.clip() method has been overloaded so it can support this operation for int, short and byte integers.
  * Some changes have been made (new methods added) on how a user can access items from the hardware map.
- * Users can now set the zero power behavior for a DC motor so that the motor will brake or float when power is zero.
+ * Users can now set the zero power behavior for a DC motor1 so that the motor1 will brake or float when power is zero.
  * Prototype Blockly Programming Mode has been added to FTC Robot Controller.  Users can place the Robot Controller into this mode, and then use a device (such as a laptop) that has a Javascript enabled browser to write Blockly-based Op Modes directly onto the Robot Controller.
  * Users can now configure the robot remotely through the FTC Driver Station app.
  * Android Studio project supports Android Studio 2.1.x and compile SDK Version 23 (Marshmallow).
@@ -694,7 +694,7 @@ Version 2.00 (released on 16.08.19)
  * Project structure has been reorganized so that there is now a TeamCode package that users can use to place their local/custom Op Modes into this package.
  * Inspection function has been integrated into the FTC Robot Controller and Driver Station Apps (Thanks Team HazMat… 9277 & 10650!).
  * Audio cues have been incorporated into FTC SDK.
- * Swap mechanism added to FTC Robot Controller configuration activity.  For example, if you have two motor controllers on a robot, and you misidentified them in your configuration file, you can use the Swap button to swap the devices within the configuration file (so you do not have to manually re-enter in the configuration info for the two devices).
+ * Swap mechanism added to FTC Robot Controller configuration activity.  For example, if you have two motor1 controllers on a robot, and you misidentified them in your configuration file, you can use the Swap button to swap the devices within the configuration file (so you do not have to manually re-enter in the configuration info for the two devices).
  * Fix mechanism added to all user to replace an electronic module easily.  For example, suppose a servo controller dies on your robot. You replace the broken module with a new module, which has a different serial number from the original servo controller.  You can use the Fix button to automatically reconfigure your configuration file to use the serial number of the new module.
  * Improvements made to fix resiliency and responsiveness of the system.
  * For LinearOpMode the user now must for a telemetry.update() to update the telemetry data on the driver station.  This update() mechanism ensures that the driver station gets the updated data properly and at the same time.
@@ -728,14 +728,14 @@ Release 16.03.09
     - runOpMode() (for a LinearOpMode) is now decoupled from the system's hardware read/write thread.
     - loop() (for an OpMode) is now decoupled from the system's hardware read/write thread.
     - Methods are synchronous.
-    - For example, if you call setMode(DcMotorController.RunMode.RESET_ENCODERS) for a motor, the encoder is guaranteed to be reset when the method call is complete.
+    - For example, if you call setMode(DcMotorController.RunMode.RESET_ENCODERS) for a motor1, the encoder is guaranteed to be reset when the method call is complete.
     - For legacy module (NXT compatible), user no longer has to toggle between read and write modes when reading from or writing to a legacy device.
  * Changes made to enhance reliability/robustness during ESD event.
  * Changes made to make code thread safe.
  * Debug keystore added so that user-generated robot controller APKs will all use the same signed key (to avoid conflicts if a team has multiple developer laptops for example).
  * Firmware version information for Modern Robotics modules are now logged.
  * Changes made to improve USB comm reliability and robustness.
- * Added support for voltage indicator for legacy (NXT-compatible) motor controllers.
+ * Added support for voltage indicator for legacy (NXT-compatible) motor1 controllers.
  * Changes made to provide auto stop capabilities for op modes.
     - A LinearOpMode class will stop when the statements in runOpMode() are complete.  User does not have to push the stop button on the driver station.
     - If an op mode is stopped by the driver station, but there is a run away/uninterruptible thread persisting, the app will log an error message then force itself to crash to stop the runaway thread.
@@ -834,7 +834,7 @@ Release 15.11.04.001
  * Fixed duplicate name UI bug (Legacy Module configuration).
  * Fixed race condition in EventLoopManager.
  * Fix to keep references stable when updating gamepad.
- * For legacy Matrix motor/servo controllers removed necessity of appending "Motor" and "Servo" to controller names.
+ * For legacy Matrix motor1/servo controllers removed necessity of appending "Motor" and "Servo" to controller names.
  * Updated HT color sensor driver to use constants from ModernRoboticsUsbLegacyModule class.
  * Updated MR color sensor driver to use constants from ModernRoboticsUsbDeviceInterfaceModule class.
  * Correctly handle I2C Address change in all color sensors
@@ -856,7 +856,7 @@ November 5, 2015
 
 Release 15.10.06.002
 
- * Added support for Legacy Matrix 9.6V motor/servo controller.
+ * Added support for Legacy Matrix 9.6V motor1/servo controller.
  * Cleaned up build.gradle file.
  * Minor UI and bug fixes for driver station and robot controller apps.
  * Throws error if Ultrasonic sensor (NXT) is not configured for legacy module port 4 or 5.

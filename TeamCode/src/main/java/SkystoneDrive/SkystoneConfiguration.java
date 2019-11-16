@@ -27,7 +27,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Servo CapStoneServo = null; // Capstone servo
     public Servo HarvesterServoRight = null;
     public Servo HarvesterServoLeft = null;
-    public Servo FoundationServo = null;
+    public CRServo FoundationServo = null;
     public DcMotor HarvesterRight = null;
     public DcMotor HarvesterLeft = null;
 
@@ -137,7 +137,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
             e.printStackTrace();
         }
         try {
-            FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
+            FoundationServo = hardwareMap.get(CRServo.class, "FoundationServo");
         } catch (Exception e) {
             e.printStackTrace();
         }

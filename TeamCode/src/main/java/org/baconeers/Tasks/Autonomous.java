@@ -29,10 +29,10 @@ public class Autonomous extends BaconOpMode {
 
         tasks.add(new DriveXYRTask (this, 0.3175, mecanumDrive, -0.3, 0, 0));
         tasks.add(new FoundationTask(this,0.5, config, 1));
-        tasks.add(new DriveXYRTask (this, 0.289, mecanumDrive, 0.3, 0, 0));
-        tasks.add(new FoundationTask(this, 0.5, config, 0));
-        tasks.add(new DriveXYRTask (this, 4.272, mecanumDrive, 0, 0.3, 0));
-        tasks.add(new DriveXYRTask (this, 0.113, mecanumDrive, -0.3, 0,0));
+        tasks.add(new DriveXYRTask (this, 0.289, mecanumDrive, 0, 0.3, 0));
+        tasks.add(new FoundationTask(this, 0.5, config, -1));
+        tasks.add(new DriveXYRTask (this, 4.272, mecanumDrive, 0.3, 0, 0));
+        tasks.add(new DriveXYRTask (this, 0.113, mecanumDrive, 0, -0.3,0));
         tasks.add(new DriveXYRTask(this, 0.2 ,mecanumDrive, 0,0,-0.3 ));
         tasks.add(new DriveXYRTask(this,0.1415, mecanumDrive,0.3,0,0));
         tasks.add(new DriveXYRTask(this,0.289, mecanumDrive, 0.3,0,0));
