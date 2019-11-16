@@ -28,6 +28,8 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Servo HarvesterServoRight = null;
     public Servo HarvesterServoLeft = null;
     public Servo FoundationServo = null;
+    public DcMotor HarvesterRight = null;
+    public DcMotor HarvesterLeft = null;
 
 
 
@@ -76,7 +78,16 @@ public class SkystoneConfiguration extends RobotConfiguration {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        try {
+            HarvesterLeft = hardwareMap.get(DcMotor.class, "HarvesterLeftMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            HarvesterRight = hardwareMap.get(DcMotor.class, "HarvesterRightMotor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
             frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
             frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -97,6 +108,17 @@ public class SkystoneConfiguration extends RobotConfiguration {
             frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
+        }
+
+        if (HarvesterRight != null && HarvesterLeft != null ) {
+            HarvesterRight.setDirection(DcMotor.Direction.FORWARD);
+            HarvesterLeft.setDirection(DcMotor.Direction.REVERSE);
+
+            HarvesterRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            HarvesterLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         }
 
         try {

@@ -4,12 +4,12 @@ import org.baconeers.common.BaconOpMode;
 
 import SkystoneDrive.SkystoneConfiguration;
 
-public class HarvesterTask extends BaseTask implements Task {
+public class HarvesterReleaseTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
     private double HarvesterPower;
 
-    public HarvesterTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double HarvesterPower) {
+    public HarvesterReleaseTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double HarvesterPower) {
         super(opMode, time);
         this.config = config;
         this.HarvesterPower = HarvesterPower;
@@ -17,8 +17,8 @@ public class HarvesterTask extends BaseTask implements Task {
     }
 
     void update() {
-         config.HarvesterServoLeft.setPosition(HarvesterPower);
          config.HarvesterServoRight.setPosition(HarvesterPower);
+         config.HarvesterServoLeft.setPosition(HarvesterPower);
 
     }
 

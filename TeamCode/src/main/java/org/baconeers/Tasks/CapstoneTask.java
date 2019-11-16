@@ -4,20 +4,20 @@ import org.baconeers.common.BaconOpMode;
 
 import SkystoneDrive.SkystoneConfiguration;
 
-public class FoundationTask extends BaseTask implements Task {
+public class CapstoneTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
-    private double FoundationPosition;
+    private double CapstonePower;
 
-    public FoundationTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double FoundationPosition) {
+    public CapstoneTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double CapstonePower) {
         super(opMode, time);
         this.config = config;
-        this.FoundationPosition = FoundationPosition;
+        this.CapstonePower = CapstonePower;
 
     }
 
     void update() {
-         config.FoundationServo.setPosition(FoundationPosition);
+         config.CapStoneServo.setPosition(CapstonePower);
 
 
     }
@@ -25,7 +25,7 @@ public class FoundationTask extends BaseTask implements Task {
     @Override
     public void run() {
         if (isFinished()) {
-            FoundationPosition = 0;
+            CapstonePower = 0;
             update();
             return;
         }
