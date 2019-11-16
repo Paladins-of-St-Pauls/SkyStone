@@ -67,14 +67,14 @@ public class SkyDriveOpMode extends BaconOpMode {
 
         try {
             harvesterServoLeft = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoLeft,
-                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 1.0, 0.0);
+                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 0.0, 1.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise capstoneMech");
         }
 
         try {
             harvesterServoRight = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoRight,
-                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 0.0, 1.0);
+                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 1.0, 0.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise capstoneMech");
         }
