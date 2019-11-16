@@ -3,7 +3,9 @@ package SkystoneDrive;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
+import org.baconeers.common.ButtonControl;
 import org.baconeers.common.GamePadSteerDrive;
+import org.baconeers.common.GamePadToggleDualMotor;
 import org.baconeers.stoneStackingMechanism.StoneTongsClass;
 import org.baconeers.stoneStackingMechanism.TongsLiftClass;
 import org.baconeers.testbot.TestBotConfiguration;
@@ -14,6 +16,7 @@ public class SkyDriveOpMode extends BaconOpMode {
     private StoneTongsClass tongs;
     private TongsLiftClass lift;
     private NormalisedMecanumDrive mecanumDrive = null;
+    GamePadToggleDualMotor harvester = null;
 
     @Override
     protected void onInit() {
@@ -39,6 +42,14 @@ public class SkyDriveOpMode extends BaconOpMode {
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise mecanum drive");
         }
+
+        try {
+            harvester = new GamePadToggleDualMotor(this, gamepad1,
+                    config.HarvesterLeft, config.HarvesterRight,
+                    ButtonControl.Y, ButtonControl.RIGHT_BUMPER, 1.0f);
+        } catch (Exception e) {
+            telemetry.addLine("Failed to initialise mecanum drive");
+        }
     }
 
     @Override
@@ -55,6 +66,10 @@ public class SkyDriveOpMode extends BaconOpMode {
 
         if (tongs != null) {
             tongs.update();
+        }
+
+        if (harvester != null) {
+            harvester.update();
         }
 
 //        if (config.touchSensor.isPressed()) {
