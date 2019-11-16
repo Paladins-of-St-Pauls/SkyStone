@@ -8,8 +8,8 @@ import SkystoneDrive.NormalisedMecanumDrive;
 import SkystoneDrive.SkystoneConfiguration;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "FinalAuto")
-public class FinalAuto extends BaconOpMode {
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueAuto")
+public class RedAuto extends BaconOpMode {
 
     private SkystoneConfiguration config;
     private NormalisedMecanumDrive mecanumDrive = null;
