@@ -22,6 +22,8 @@ public class SkyDriveOpMode extends BaconOpMode {
     GamePadCRServo foundationServo = null;
 
     GamePadToggle2positionServo capstoneMech = null;
+    GamePadToggle2positionServo harvesterServoLeft = null;
+    GamePadToggle2positionServo harvesterServoRight = null;
 
     @Override
     protected void onInit() {
@@ -64,6 +66,20 @@ public class SkyDriveOpMode extends BaconOpMode {
         }
 
         try {
+            harvesterServoLeft = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoLeft,
+                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 1.0, 0.0);
+        } catch (Exception e) {
+            telemetry.addLine("Failed to initialise capstoneMech");
+        }
+
+        try {
+            harvesterServoRight = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoRight,
+                    ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 0.0, 1.0);
+        } catch (Exception e) {
+            telemetry.addLine("Failed to initialise capstoneMech");
+        }
+
+        try {
             foundationServo = new GamePadCRServo(this, gamepad1, config.FoundationServo,
                     ButtonControl.A, ButtonControl.B, 0.5f);
         } catch (Exception e) {
@@ -76,7 +92,7 @@ public class SkyDriveOpMode extends BaconOpMode {
     protected void activeLoop() throws InterruptedException {
 
         if (mecanumDrive != null) {
-            mecanumDrive.setSpeedXYR(-gamepad1.left_stick_y, -gamepad1.left_stick_x, -gamepad1.right_stick_x);
+            mecanumDrive.setSpeedXYR(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
             mecanumDrive.update();
         }
 
@@ -100,8 +116,12 @@ public class SkyDriveOpMode extends BaconOpMode {
             foundationServo.update();
         }
 
-//        if (config.touchSensor.isPressed()) {
-//            telemetry.addLine("Touch pressed");
-//        }
+        if (harvesterServoLeft != null) {
+            harvesterServoLeft.update();
+        }
+
+        if (harvesterServoRight != null) {
+            harvesterServoRight.update();
+        }
     }
 }
