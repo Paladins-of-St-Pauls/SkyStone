@@ -19,7 +19,6 @@ public class HarvesterReleaseTask extends BaseTask implements Task {
     void update() {
          config.HarvesterServoRight.setPosition(HarvesterPower);
          config.HarvesterServoLeft.setPosition(HarvesterPower);
-
     }
 
     @Override

@@ -46,47 +46,47 @@ public class SkystoneConfiguration extends RobotConfiguration {
         try {
             frontLeftMotor  = hardwareMap.get(DcMotor.class, "FrontLeftMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("FrontLeftMotor failed to configure");
         }
         try {
             frontRightMotor = hardwareMap.get(DcMotor.class, "FrontRightMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("FrontRightMotor failed to configure");
         }
         try {
             backLeftMotor = hardwareMap.get(DcMotor.class,"BackLeftMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("BackLeftMotor failed to configure");
         }
         try {
             backRightMotor = hardwareMap.get(DcMotor.class,"BackRightMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("BackRightMotor failed to configure");
         }
         try {
             gripServo = hardwareMap.get(CRServo.class, "gripServo");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("gripServo failed to configure");
         }
         try {
             movementServo = hardwareMap.get(CRServo.class, "movementServo");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("movementServo failed to configure");
         }
         try {
             liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("LiftMotor failed to configure");
         }
         try {
             HarvesterLeft = hardwareMap.get(DcMotor.class, "HarvesterLeftMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("HarvesterLeftMotor failed to configure");
         }
         try {
             HarvesterRight = hardwareMap.get(DcMotor.class, "HarvesterRightMotor");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("HarvesterRightMotor failed to configure");
         }
         if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
             frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -124,22 +124,22 @@ public class SkystoneConfiguration extends RobotConfiguration {
         try {
             CapStoneServo = hardwareMap.get (Servo.class, "CapStone");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("CapStone failed to configure");
         }
         try {
             HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("HarvesterServoLeft failed to configure");
         }
         try {
             HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("HarvesterServoRight failed to configure");
         }
         try {
             FoundationServo = hardwareMap.get(CRServo.class, "FoundationServo");
         } catch (Exception e) {
-            e.printStackTrace();
+            telemetry.addLine("FoundationServo failed to configure");
         }
 
         telemetry.addData("Initialized","True");
