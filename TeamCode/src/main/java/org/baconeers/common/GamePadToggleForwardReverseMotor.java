@@ -104,10 +104,6 @@ public class GamePadToggleForwardReverseMotor extends BaconComponent {
             }
         }
         lastButtonState = pressed;
-        if (lastpower != motor1.getPower()){
-            motor1.setPower(lastpower);
-        }
-
     }
 
 
