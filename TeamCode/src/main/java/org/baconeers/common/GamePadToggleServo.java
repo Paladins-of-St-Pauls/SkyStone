@@ -1,10 +1,7 @@
 package org.baconeers.common;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
 /**
@@ -13,17 +10,35 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class GamePadToggleServo extends BaconComponent {
 
 
-    private final Servo redservo;
+    private final Servo servo;
     private final Gamepad gamepad;
+    private final ButtonControl buttonControl;
+    private final double[] positions;
 
-    private double lastPosition = -1.0;
 
-    public GamePadToggleServo(BaconOpMode opMode, Gamepad gamepad, Servo redservo) {
+    private int positionIndex = -1;
+    private boolean lastButtonState = false;
+
+    public GamePadToggleServo(BaconOpMode opMode, Gamepad gamepad, ButtonControl buttonControl, Servo servo, double[] positions, boolean setPositionOnStart) {
         super(opMode);
 
         this.gamepad = gamepad;
-        this.redservo = redservo;
+        this.buttonControl = buttonControl;
+        this.servo = servo;
+        this.positions = positions;
 
+        if (setPositionOnStart) {
+            incrementAndSetServo();
+        }
+    }
+
+    public GamePadToggleServo(BaconOpMode opMode, Gamepad gamepad, ButtonControl buttonControl, Servo servo, double[] positions) {
+        this(opMode, gamepad, buttonControl, servo, positions, false);
+    }
+
+    private void incrementAndSetServo() {
+        positionIndex = (positionIndex + 1) % positions.length;
+        servo.setPosition(positions[positionIndex]);
     }
 
     /**
@@ -32,27 +47,12 @@ public class GamePadToggleServo extends BaconComponent {
     public void update() {
         // Only toggle when the button state changes from false to true, ie when the
         // button is pressed down (and not when the button comes back up)
-        double position = -1.0;
-        boolean pressed = false;
-        if (buttonPressed(gamepad, ButtonControl.DPAD_DOWN)) {
-            position = 0.2;
-            pressed = true;
-        } else if (buttonPressed(gamepad, ButtonControl.DPAD_LEFT)) {
-            position = 1.0;
-            pressed = true;
-        } else if (buttonPressed(gamepad, ButtonControl.DPAD_RIGHT)) {
-            position = 0;
-            pressed = true;
+        boolean buttonState = buttonPressed(gamepad, buttonControl);
+        if (!lastButtonState && buttonState) {
+            // Button changed from false to true
+            incrementAndSetServo();
         }
-
-
-        if (pressed && lastPosition != position) {
-
-            redservo.setPosition(position);
-
-        }
-
-        lastPosition = position;
+        lastButtonState = buttonState;
     }
 }
 
