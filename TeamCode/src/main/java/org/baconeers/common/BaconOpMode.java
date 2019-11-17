@@ -68,6 +68,8 @@ public abstract class BaconOpMode extends LinearOpMode {
                 try {
                     activeLoop();
                     loopCount++;
+                } catch (InterruptedException ie) {
+                    throw ie;
                 } catch (Throwable e) {
                     ErrorUtil.handleCatchAllException(e, telemetry);
                 }
