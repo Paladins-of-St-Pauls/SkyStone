@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.baconeers.common.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.Camera;
 
 /**
  * It is assumed that there is a configuration that is currently activated on the robot controller
@@ -30,6 +31,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public CRServo FoundationServo = null;
     public DcMotor HarvesterRight = null;
     public DcMotor HarvesterLeft = null;
+    public Camera Cam = null;
 
 
 
@@ -75,6 +77,10 @@ public class SkystoneConfiguration extends RobotConfiguration {
         }
         try {
             liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
+            liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
         } catch (Exception e) {
             telemetry.addLine("LiftMotor failed to configure");
         }
@@ -88,6 +94,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
         } catch (Exception e) {
             telemetry.addLine("HarvesterRightMotor failed to configure");
         }
+        try {
+            Cam = hardwareMap.get(Camera.class, "Cam");
+        } catch (Exception e) {
+            telemetry.addLine("Camera failed to configure");
+        }
+
         if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
             frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
             frontRightMotor.setDirection(DcMotor.Direction.REVERSE);

@@ -11,7 +11,7 @@ import org.baconeers.common.GamePadToggleDualMotor;
 import SkystoneDrive.NormalisedMecanumDrive;
 import SkystoneDrive.SkystoneConfiguration;
 
-@TeleOp(name = "SkyDrive")
+@TeleOp(name = "LiftTest")
 public class TongsLiftTest extends BaconOpMode {
     private SkystoneConfiguration config;
     private TongsLiftClass lift;
@@ -19,7 +19,7 @@ public class TongsLiftTest extends BaconOpMode {
     @Override
     protected void onInit() {
         config = SkystoneConfiguration.newConfig(hardwareMap, telemetry);
-        lift = new TongsLiftClass(this, config);
+        lift = new TongsLiftClass(this, config, telemetry);
     }
 
     @Override
