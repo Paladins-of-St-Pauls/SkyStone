@@ -18,7 +18,8 @@ public class FoundationTask extends BaseTask implements Task {
 
     void update() {
          config.FoundationServo.setPosition(position);
-
+        // Position 1.0 = up
+        // Position 0.0 = down
 
     }
 

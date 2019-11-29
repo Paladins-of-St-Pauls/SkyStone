@@ -17,9 +17,9 @@ public class SkyDriveOpMode extends BaconOpMode {
     private TongsLiftClass lift;
     private NormalisedMecanumDrive mecanumDrive = null;
     GamePadToggleDualMotor harvester = null;
-    GamePadCRServo foundationServo = null;
 
     GamePadToggle2positionServo capstoneMech = null;
+    GamePadToggle2positionServo foundationServo = null;
     GamePadToggle2positionServo harvesterServoLeft = null;
     GamePadToggle2positionServo harvesterServoRight = null;
 
@@ -78,8 +78,8 @@ public class SkyDriveOpMode extends BaconOpMode {
         }
 
         try {
-            foundationServo = new GamePadCRServo(this, gamepad1, config.FoundationServo,
-                    ButtonControl.A, ButtonControl.B, 0.5f);
+            foundationServo = new GamePadToggle2positionServo(this, gamepad1, config.FoundationServo,
+                    ButtonControl.A, ButtonControl.B, 0.0, 1.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise foundationServo");
 

@@ -1,5 +1,6 @@
 package org.baconeers.Tasks;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
@@ -11,7 +12,7 @@ import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 
-@TeleOp(name = "TaskTest")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "TaskTest")
 public class TaskTestOpMode extends BaconOpMode {
 
     private SkystoneConfiguration config;
@@ -26,10 +27,11 @@ public class TaskTestOpMode extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
-        tasks.add(new MotorTestTask(this, 1.0, config, 1, 0, 0, 0));
-        tasks.add(new MotorTestTask(this, 1.0, config, 0, 1, 0, 0));
-        tasks.add(new MotorTestTask(this, 1.0, config, 0, 0, 1, 0));
-        tasks.add(new MotorTestTask(this, 1.0, config, 0, 0, 0, 1));
+        tasks.add(new FoundationTask(this, 1.0, config, 0.0));
+        tasks.add(new DriveXYRTask(this, 5.0, mecanumDrive, 0.0, 0.0, 0.0));
+        tasks.add(new FoundationTask(this, 1.0, config, 0.7));
+        tasks.add(new DriveXYRTask(this, 5.0, mecanumDrive, 0.0, 0.0, 0.0));
+
     }
 
 
