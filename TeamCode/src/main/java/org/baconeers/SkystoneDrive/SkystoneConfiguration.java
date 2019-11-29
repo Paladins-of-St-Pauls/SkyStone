@@ -21,15 +21,15 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public DcMotor frontRightMotor = null;
     public DcMotor backLeftMotor = null;
     public DcMotor backRightMotor = null;
-    public CRServo gripServo = null; // Grips the stone
-    public CRServo movementServo = null; // Moves the stone tongs
     public DcMotor liftMotor = null;
+    public DcMotor HarvesterRight = null;
+    public DcMotor HarvesterLeft = null;
+    public Servo gripServo = null; // Grips the stone
+    public Servo movementServo = null; // Moves the stone tongs
     public Servo CapStoneServo = null; // Capstone servo
     public Servo HarvesterServoRight = null;
     public Servo HarvesterServoLeft = null;
-    public CRServo FoundationServo = null;
-    public DcMotor HarvesterRight = null;
-    public DcMotor HarvesterLeft = null;
+    public Servo FoundationServo = null;
     public Camera Cam = null;
 
 
@@ -64,12 +64,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("BackRightMotor failed to configure");
         }
         try {
-            gripServo = hardwareMap.get(CRServo.class, "gripServo");
+            gripServo = hardwareMap.get(Servo.class, "GripServo");
         } catch (Exception e) {
             telemetry.addLine("gripServo failed to configure");
         }
         try {
-            movementServo = hardwareMap.get(CRServo.class, "movementServo");
+            movementServo = hardwareMap.get(Servo.class, "MovementServo");
         } catch (Exception e) {
             telemetry.addLine("movementServo failed to configure");
         }
@@ -147,7 +147,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("HarvesterServoRight failed to configure");
         }
         try {
-            FoundationServo = hardwareMap.get(CRServo.class, "FoundationServo");
+            FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
         } catch (Exception e) {
             telemetry.addLine("FoundationServo failed to configure");
         }

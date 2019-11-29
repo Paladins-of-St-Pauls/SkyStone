@@ -10,31 +10,31 @@ public class HarvesterMotorTask extends BaseTask implements Task    {
     private final NormalisedMecanumDrive drive;
     private final double speedY;
     private final SkystoneConfiguration config;
-    private double HarvesterPower;
+    private double harvesterPower;
     private double Speed;
 
 
 
-    public HarvesterMotorTask(BaconOpMode opMode, double time, SkystoneConfiguration config, NormalisedMecanumDrive drive, double HarvesterPower, double Speed) {
+    public HarvesterMotorTask(BaconOpMode opMode, double time, SkystoneConfiguration config, NormalisedMecanumDrive drive, double harvesterPower, double Speed) {
         super(opMode, time);
         this.speedY = Speed;
         this.config = config;
         this.drive = drive;
-        this.HarvesterPower = HarvesterPower;
+        this.harvesterPower = harvesterPower;
 
 
     }
 
     void update() {
-         config.HarvesterServoRight.setPosition(HarvesterPower);
-         config.HarvesterServoLeft.setPosition(HarvesterPower);
+         config.HarvesterServoRight.setPosition(harvesterPower);
+         config.HarvesterServoLeft.setPosition(harvesterPower);
 
     }
 
     @Override
     public void run() {
         if (isFinished()) {
-            HarvesterPower = 0;
+            harvesterPower = 0;
             update();
             return;
         }

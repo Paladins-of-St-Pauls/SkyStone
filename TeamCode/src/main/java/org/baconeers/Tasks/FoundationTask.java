@@ -7,17 +7,17 @@ import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 public class FoundationTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
-    private double FoundationPower;
+    private double position;
 
-    public FoundationTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double FoundationPower) {
+    public FoundationTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double position) {
         super(opMode, time);
         this.config = config;
-        this.FoundationPower = FoundationPower;
+        this.position = position;
 
     }
 
     void update() {
-         config.FoundationServo.setPower(FoundationPower);
+         config.FoundationServo.setPosition(position);
 
 
     }
@@ -25,8 +25,6 @@ public class FoundationTask extends BaseTask implements Task {
     @Override
     public void run() {
         if (isFinished()) {
-            FoundationPower = -0.2;
-            update();
             return;
         }
         update();
