@@ -3,7 +3,7 @@ package org.baconeers.stoneStackingMechanism;
 import org.baconeers.common.BaconComponent;
 import org.baconeers.common.BaconOpMode;
 
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class StoneTongsClass extends BaconComponent {
 

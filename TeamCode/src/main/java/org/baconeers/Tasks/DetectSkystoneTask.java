@@ -4,7 +4,7 @@ import org.baconeers.common.BaconOpMode;
 
 import java.util.ArrayDeque;
 
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class DetectSkystoneTask extends BaseTask implements Task {
 

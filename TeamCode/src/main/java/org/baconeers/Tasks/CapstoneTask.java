@@ -2,7 +2,7 @@ package org.baconeers.Tasks;
 
 import org.baconeers.common.BaconOpMode;
 
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class CapstoneTask extends BaseTask implements Task {
 

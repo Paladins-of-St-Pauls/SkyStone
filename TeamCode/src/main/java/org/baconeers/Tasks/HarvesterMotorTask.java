@@ -2,8 +2,8 @@ package org.baconeers.Tasks;
 
 import org.baconeers.common.BaconOpMode;
 
-import SkystoneDrive.NormalisedMecanumDrive;
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class HarvesterMotorTask extends BaseTask implements Task    {
 

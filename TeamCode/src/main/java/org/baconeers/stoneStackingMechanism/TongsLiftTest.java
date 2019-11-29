@@ -3,13 +3,8 @@ package org.baconeers.stoneStackingMechanism;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
-import org.baconeers.common.ButtonControl;
-import org.baconeers.common.GamePadCRServo;
-import org.baconeers.common.GamePadToggle2positionServo;
-import org.baconeers.common.GamePadToggleDualMotor;
 
-import SkystoneDrive.NormalisedMecanumDrive;
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 @TeleOp(name = "LiftTest")
 public class TongsLiftTest extends BaconOpMode {

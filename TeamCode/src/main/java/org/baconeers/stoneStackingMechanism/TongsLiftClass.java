@@ -4,7 +4,7 @@ import org.baconeers.common.BaconComponent;
 import org.baconeers.common.BaconOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class TongsLiftClass extends BaconComponent {
 

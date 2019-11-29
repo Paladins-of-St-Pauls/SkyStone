@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
 
-import SkystoneDrive.SkystoneConfiguration;
-import SkystoneDrive.SkystoneDrive;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneDrive;
 
 @TeleOp(name = "StackingTest")
 public class StackingOpMode extends BaconOpMode {

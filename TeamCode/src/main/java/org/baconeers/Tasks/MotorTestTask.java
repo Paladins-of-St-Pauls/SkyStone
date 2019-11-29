@@ -2,8 +2,7 @@ package org.baconeers.Tasks;
 
 import org.baconeers.common.BaconOpMode;
 
-import SkystoneDrive.NormalisedMecanumDrive;
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 public class MotorTestTask extends BaseTask implements Task {
 
