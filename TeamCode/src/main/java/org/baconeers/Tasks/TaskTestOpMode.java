@@ -18,6 +18,7 @@ public class TaskTestOpMode extends BaconOpMode {
     private SkystoneConfiguration config;
     private NormalisedMecanumDrive mecanumDrive = null;
     private ArrayDeque<Task> tasks = new ArrayDeque<>();
+    private double position = (1.0/6.0);
 
     @Override
     protected void onInit() {
@@ -27,10 +28,18 @@ public class TaskTestOpMode extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
-        tasks.add(new FoundationTask(this, 1.0, config, 0.0));
-        tasks.add(new DriveXYRTask(this, 5.0, mecanumDrive, 0.0, 0.0, 0.0));
-        tasks.add(new FoundationTask(this, 1.0, config, 0.7));
-        tasks.add(new DriveXYRTask(this, 5.0, mecanumDrive, 0.0, 0.0, 0.0));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.0));
+        tasks.add(new FoundationTask(this, 5.0, config, position));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.09));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.08));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.07));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.06));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.05));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.04));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.03));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.02));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.01));
+        tasks.add(new FoundationTask(this, 5.0, config, 0.00));
 
     }
 
