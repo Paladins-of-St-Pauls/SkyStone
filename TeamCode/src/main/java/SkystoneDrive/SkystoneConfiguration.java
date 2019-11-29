@@ -3,12 +3,15 @@ package SkystoneDrive;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.baconeers.common.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.Camera;
+
+import java.util.Iterator;
 
 /**
  * It is assumed that there is a configuration that is currently activated on the robot controller
@@ -34,7 +37,6 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Camera Cam = null;
 
 
-
     /**
      * Assign your class instance variables to the saved device names in the hardware map
      *
@@ -42,7 +44,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
      * @param telemetry
      */
     @Override
-    protected void init(HardwareMap hardwareMap, Telemetry telemetry) {
+    protected void init(HardwareMap hardwareMap, final Telemetry telemetry) {
         setTelemetry(telemetry);
 
         try {
@@ -77,12 +79,14 @@ public class SkystoneConfiguration extends RobotConfiguration {
         }
         try {
             liftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
-            liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
+            if (liftMotor != null) {
+                liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                liftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                liftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            }
         } catch (Exception e) {
             telemetry.addLine("LiftMotor failed to configure");
+            telemetry.addLine(e.getMessage());
         }
         try {
             HarvesterLeft = hardwareMap.get(DcMotor.class, "HarvesterLeftMotor");
@@ -120,8 +124,6 @@ public class SkystoneConfiguration extends RobotConfiguration {
             frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
         }
 
         if (HarvesterRight != null && HarvesterLeft != null ) {
@@ -154,7 +156,14 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("FoundationServo failed to configure");
         }
 
-        telemetry.addData("Initialized","True");
+//        Iterator<HardwareMap.DeviceMapping<? extends HardwareDevice>> iter  = hardwareMap.allDeviceMappings.iterator();
+//        while (iter.hasNext()) {
+//            telemetry.addLine(iter.next().toString());
+//        }
+
+
+
+        telemetry.addData("Initialized", "True");
         telemetry.update();
     }
     //down 1.35

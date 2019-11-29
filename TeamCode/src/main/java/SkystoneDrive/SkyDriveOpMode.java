@@ -36,7 +36,7 @@ public class SkyDriveOpMode extends BaconOpMode {
         }
 
         try {
-            lift = new TongsLiftClass(this, config);
+            lift = new TongsLiftClass(this, config, telemetry);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise tong lift");
         }

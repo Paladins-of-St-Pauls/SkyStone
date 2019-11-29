@@ -25,7 +25,7 @@ public class TongsLiftClass extends BaconComponent {
 
     public void update() {
 
-        liftPower = opmode.gamepad2.left_stick_y;
+        liftPower = -opmode.gamepad2.left_stick_y;
         telemetry.addData("Lift Power: ",  liftPower);
         telemetry.update();
         config.liftMotor.setPower(liftPower);

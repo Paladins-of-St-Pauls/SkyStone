@@ -19,7 +19,7 @@ public class StackingOpMode extends BaconOpMode {
        config  = SkystoneConfiguration.newConfig(hardwareMap, telemetry);
 
        tongs = new StoneTongsClass(this, config);
-       lift = new TongsLiftClass(this, config);
+       lift = new TongsLiftClass(this, config, telemetry);
        drive = new SkystoneDrive(this, config);
 
     }
