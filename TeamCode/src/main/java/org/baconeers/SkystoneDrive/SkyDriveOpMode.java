@@ -1,16 +1,14 @@
-package SkystoneDrive;
+package org.baconeers.SkystoneDrive;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
 import org.baconeers.common.ButtonControl;
 import org.baconeers.common.GamePadCRServo;
-import org.baconeers.common.GamePadSteerDrive;
 import org.baconeers.common.GamePadToggle2positionServo;
 import org.baconeers.common.GamePadToggleDualMotor;
 import org.baconeers.stoneStackingMechanism.StoneTongsClass;
 import org.baconeers.stoneStackingMechanism.TongsLiftClass;
-import org.baconeers.testbot.TestBotConfiguration;
 
 @TeleOp(name = "SkyDrive")
 public class SkyDriveOpMode extends BaconOpMode {

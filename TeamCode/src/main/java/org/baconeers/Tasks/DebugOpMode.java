@@ -6,8 +6,8 @@ import org.baconeers.common.BaconOpMode;
 
 import java.util.ArrayDeque;
 
-import SkystoneDrive.NormalisedMecanumDrive;
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 
 @TeleOp(name = "DebugOpMode")

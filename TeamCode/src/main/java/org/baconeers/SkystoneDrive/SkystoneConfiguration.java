@@ -1,17 +1,13 @@
-package SkystoneDrive;
+package org.baconeers.SkystoneDrive;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.baconeers.common.RobotConfiguration;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.Camera;
-
-import java.util.Iterator;
 
 /**
  * It is assumed that there is a configuration that is currently activated on the robot controller

@@ -1,4 +1,4 @@
-package SkystoneDrive;
+package org.baconeers.SkystoneDrive;
 
 import org.baconeers.common.BaconComponent;
 import org.baconeers.common.BaconOpMode;

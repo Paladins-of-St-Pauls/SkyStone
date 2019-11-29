@@ -1,6 +1,5 @@
-package SkystoneDrive;
+package org.baconeers.SkystoneDrive;
 
-import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
 public class MecanumDrivePower {

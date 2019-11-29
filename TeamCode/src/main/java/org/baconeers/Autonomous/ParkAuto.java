@@ -1,11 +1,13 @@
-package org.baconeers.Tasks;
+package org.baconeers.Autonomous;
 
+import org.baconeers.Tasks.DriveXYRTask;
+import org.baconeers.Tasks.Task;
 import org.baconeers.common.BaconOpMode;
 
 import java.util.ArrayDeque;
 
-import SkystoneDrive.NormalisedMecanumDrive;
-import SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
+import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 
 @com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "ParkONLYAuto")
@@ -23,7 +25,7 @@ public class ParkAuto extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
-        tasks.add(new DriveXYRTask (this, 1.82, mecanumDrive, -0.3, 0, 0));
+        tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
 
 
 
