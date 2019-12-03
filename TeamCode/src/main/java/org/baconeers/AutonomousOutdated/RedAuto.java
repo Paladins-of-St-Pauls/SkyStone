@@ -1,4 +1,4 @@
-package org.baconeers.Autonomous;
+package org.baconeers.AutonomousOutdated;
 
 import org.baconeers.Tasks.DriveXYRTask;
 import org.baconeers.Tasks.FoundationTask;
@@ -11,8 +11,8 @@ import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueAuto")
-public class BlueAuto extends BaconOpMode {
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedAuto")
+public class RedAuto extends BaconOpMode {
 
     private SkystoneConfiguration config;
     private NormalisedMecanumDrive mecanumDrive = null;
@@ -30,7 +30,8 @@ public class BlueAuto extends BaconOpMode {
         tasks.add(new FoundationTask(this,2, config, -1));
         tasks.add(new DriveXYRTask (this, 1.80, mecanumDrive, 0.3, 0, 0));
         tasks.add(new FoundationTask(this, 2, config, 1));
-        tasks.add(new DriveXYRTask (this, 2.73, mecanumDrive, 0, 0.3, 0));
+        tasks.add(new DriveXYRTask (this, 2.80, mecanumDrive, 0, -0.3, 0));
+        tasks.add(new DriveXYRTask(this, 2.0, mecanumDrive, 0, 0.3,0));
 
 
 
