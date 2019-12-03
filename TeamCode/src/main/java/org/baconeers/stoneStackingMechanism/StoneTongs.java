@@ -5,7 +5,7 @@ import org.baconeers.common.BaconOpMode;
 
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
-public class StoneTongsClass extends BaconComponent {
+public class StoneTongs extends BaconComponent {
 
     private BaconOpMode opmode;
     private SkystoneConfiguration config;
@@ -15,7 +15,7 @@ public class StoneTongsClass extends BaconComponent {
 
     private String tongStatus = "Up (deactivated)";
 
-    public StoneTongsClass(BaconOpMode opmodeIn, SkystoneConfiguration configIn) {
+    public StoneTongs(BaconOpMode opmodeIn, SkystoneConfiguration configIn) {
         super(opmodeIn);
         opmode = opmodeIn;
         config = configIn;

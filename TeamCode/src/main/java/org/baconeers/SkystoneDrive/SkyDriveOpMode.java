@@ -4,17 +4,16 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.baconeers.common.BaconOpMode;
 import org.baconeers.common.ButtonControl;
-import org.baconeers.common.GamePadCRServo;
 import org.baconeers.common.GamePadToggle2positionServo;
 import org.baconeers.common.GamePadToggleDualMotor;
-import org.baconeers.stoneStackingMechanism.StoneTongsClass;
-import org.baconeers.stoneStackingMechanism.TongsLiftClass;
+import org.baconeers.stoneStackingMechanism.StoneTongs;
+import org.baconeers.stoneStackingMechanism.TongsLift;
 
 @TeleOp(name = "SkyDrive")
 public class SkyDriveOpMode extends BaconOpMode {
     private SkystoneConfiguration config;
-    private StoneTongsClass tongs;
-    private TongsLiftClass lift;
+    private StoneTongs tongs;
+    private TongsLift lift;
     private NormalisedMecanumDrive mecanumDrive = null;
     GamePadToggleDualMotor harvester = null;
 
@@ -28,13 +27,13 @@ public class SkyDriveOpMode extends BaconOpMode {
         config = SkystoneConfiguration.newConfig(hardwareMap, telemetry);
 
         try {
-            tongs = new StoneTongsClass(this, config);
+            tongs = new StoneTongs(this, config);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise tongs");
         }
 
         try {
-            lift = new TongsLiftClass(this, config, telemetry);
+            lift = new TongsLift(this, config, telemetry);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise tong lift");
         }

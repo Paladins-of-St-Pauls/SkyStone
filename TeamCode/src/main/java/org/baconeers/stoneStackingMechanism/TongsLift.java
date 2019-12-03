@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 
-public class TongsLiftClass extends BaconComponent {
+public class TongsLift extends BaconComponent {
 
     private BaconOpMode opmode;
     private SkystoneConfiguration config;
@@ -14,7 +14,7 @@ public class TongsLiftClass extends BaconComponent {
     private Telemetry telemetry;
 
 
-    public TongsLiftClass(BaconOpMode opmodeIn, SkystoneConfiguration configIn, Telemetry telemetryIn) {
+    public TongsLift(BaconOpMode opmodeIn, SkystoneConfiguration configIn, Telemetry telemetryIn) {
         super(opmodeIn);
         opmode = opmodeIn;
         config = configIn;

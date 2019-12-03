@@ -10,16 +10,16 @@ import org.baconeers.SkystoneDrive.SkystoneDrive;
 @TeleOp(name = "StackingTest")
 public class StackingOpMode extends BaconOpMode {
     private SkystoneConfiguration config;
-    private StoneTongsClass tongs;
-    private TongsLiftClass lift;
+    private StoneTongs tongs;
+    private TongsLift lift;
     private SkystoneDrive drive;
 
     @Override
     protected void onInit() {
        config  = SkystoneConfiguration.newConfig(hardwareMap, telemetry);
 
-       tongs = new StoneTongsClass(this, config);
-       lift = new TongsLiftClass(this, config, telemetry);
+       tongs = new StoneTongs(this, config);
+       lift = new TongsLift(this, config, telemetry);
        drive = new SkystoneDrive(this, config);
 
     }

@@ -9,12 +9,12 @@ import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 @TeleOp(name = "MovementServoTest")
 public class TongsLiftTest extends BaconOpMode {
     private SkystoneConfiguration config;
-    private StoneTongsClass tongs;
+    private StoneTongs tongs;
 
     @Override
     protected void onInit() {
         config = SkystoneConfiguration.newConfig(hardwareMap, telemetry);
-        tongs = new StoneTongsClass(this, config);
+        tongs = new StoneTongs(this, config);
     }
 
     @Override
