@@ -24,7 +24,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public DcMotor liftMotor = null;
     public DcMotor HarvesterRight = null;
     public DcMotor HarvesterLeft = null;
-    public Servo gripServo = null; // Grips the stone
+    public CRServo gripServo = null; // Grips the stone
     public Servo movementServo = null; // Moves the stone tongs
     public Servo CapStoneServo = null; // Capstone servo
     public Servo HarvesterServoRight = null;
@@ -64,7 +64,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("BackRightMotor failed to configure");
         }
         try {
-            gripServo = hardwareMap.get(Servo.class, "GripServo");
+            gripServo = hardwareMap.get(CRServo.class, "GripServo");
         } catch (Exception e) {
             telemetry.addLine("gripServo failed to configure");
         }

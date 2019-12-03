@@ -23,44 +23,19 @@ public class StoneTongs extends BaconComponent {
     }
 
     public void update() {
-        // Move the stone tongs
-        double servoPos = opmode.gamepad2.right_stick_x;
-        config.movementServo.setPosition(servoPos);
-
         // Grab/release the stone
         boolean aCurrentState = opmode.gamepad2.a;
         boolean bCurrentState = opmode.gamepad2.b;
-        boolean xCurrentState = opmode.gamepad2.x;
-        boolean yCurrentState = opmode.gamepad2.y;
 
-        double grabberServoPos;
+        double gripServoPower = opmode.gamepad2.right_stick_y/2;
+        config.gripServo.setPower(gripServoPower);
+
         if (aCurrentState) {
-            grabberServoPos = 0.7;
-            config.gripServo.setPosition(grabberServoPos);
-//            config.gripServo.setPower(0.5);
-            tongStatus = "Down (activated)";
-        } else if (bCurrentState){
-            grabberServoPos = 0.0;
-            config.gripServo.setPosition(grabberServoPos);
-//            config.gripServo.setPower(-0.5);
-            tongStatus = "Up (deactivated)";
-        } else {
-//            config.gripServo.setPower(0.0);
+            config.movementServo.setPosition(0.0);
+        } else if (bCurrentState) {
+            config.movementServo.setPosition(1.0);
         }
-
-/*        double movementServoPos;
-        if (xCurrentState) {
-            movementServoPos = 0.;
-            config.movementServo.setPosition(movementServoPos);
-            tongStatus = "Ready to drop! (activated)";
-        } else if (yCurrentState){
-            movementServoPos = 0.;
-            config.movementServo.setPosition(movementServoPos);
-            tongStatus = "Turn to drop! (deactivated)";
-        } else {
-        }
-*/
-
+        
         //aPrevState = aCurrentState;
         //bPrevState = bCurrentState;
 
