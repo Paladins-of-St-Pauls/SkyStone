@@ -34,6 +34,11 @@ public class RedSkystones extends BaconOpMode {
 
     }
 
+    private double getDriveTime(double distance) {
+        double driveTime = 0.0186*distance+0.1819;
+        return driveTime;
+    }
+
 
     @Override
     protected void activeLoop() throws InterruptedException {
