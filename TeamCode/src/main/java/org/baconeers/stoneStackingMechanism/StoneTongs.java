@@ -23,12 +23,16 @@ public class StoneTongs extends BaconComponent {
     }
 
     public void update() {
+        
         // Grab/release the stone
         boolean aCurrentState = opmode.gamepad2.a;
         boolean bCurrentState = opmode.gamepad2.b;
 
-        double gripServoPower = opmode.gamepad2.right_stick_y/2;
-        config.gripServo.setPower(gripServoPower);
+        boolean leftBumperState = opmode.gamepad2.left_bumper;
+        boolean rightBumperState = opmode.gamepad2.right_bumper;
+
+//        double gripServoPower = opmode.gamepad2.right_stick_x;
+//        config.gripServo.setPower(gripServoPower);
 
         if (aCurrentState) {
             config.movementServo.setPosition(0.0);
@@ -36,11 +40,15 @@ public class StoneTongs extends BaconComponent {
             config.movementServo.setPosition(1.0);
         }
 
-        //aPrevState = aCurrentState;
-        //bPrevState = bCurrentState;
+        if (leftBumperState) {
+            config.gripServo.setPower(-1.0);
+        } else if (rightBumperState) {
+            config.gripServo.setPower(1.0);
+        } else {
+            config.gripServo.setPower(0.0);
+        }
 
-//        opmode.telemetry.addData("Servo", "Power: " + servoPower);
-        opmode.telemetry.addData("Tongs Status", "Stone Tongs: " + tongStatus);
+
         opmode.telemetry.update();
 
     }
