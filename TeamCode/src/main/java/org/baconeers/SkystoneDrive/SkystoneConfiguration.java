@@ -110,6 +110,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("ColourSensor failed to configure");
         }
 
+        if (colourSensor != null) {
+            colourSensor.enableLed(true);
+
+        }
+
+
         if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
             frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
             frontRightMotor.setDirection(DcMotor.Direction.REVERSE);

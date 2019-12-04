@@ -25,6 +25,7 @@ public class BlueFoundation extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
+
         tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
         tasks.add(new FoundationTask(this, 1.0, config,0.0));
         tasks.add(new DriveXYRTask(this, 1.62, mecanumDrive, 0.3, 0.0, 0.0));
@@ -32,11 +33,14 @@ public class BlueFoundation extends BaconOpMode {
         tasks.add(new FoundationTask(this, 1.0, config, 1.0));
         tasks.add(new DriveXYRTask(this, 2.0, mecanumDrive, 0.0, -0.3, 0.0));
         tasks.add(new DriveXYRTask(this, 0.5, mecanumDrive, 0.0, 0.0, -0.3));
-
         
 
+    }
 
-
+    //Return drive time from distance (in cm)
+    private double getDriveTime(double distance) {
+        double driveTime = 0.0186*distance+0.1819;
+        return driveTime;
     }
 
 
