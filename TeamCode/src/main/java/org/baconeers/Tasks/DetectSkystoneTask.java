@@ -41,16 +41,16 @@ public class DetectSkystoneTask extends BaseTask implements Task {
         if (isFinished()) {
 
             //Pseudo-code for detecting stones until colour sensor is coded
-            if (colour == yellow && stoneCount < 6) {
+            if (colour == 1 && stoneCount < 6) {
                 stoneCount += 1;
                 tasks.addFirst(new DetectSkystoneTask(opMode, 2.0, config, tasks, stoneCount,1));
                 tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive, 0.3*direction, 0.0*direction, 0.0*direction));
 
-            } else if (colour == yellow && stoneCount == 6) {
+            } else if (colour == 1 && stoneCount == 6) {
                 tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 1.0));
                 tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0*direction, 0.3*direction, 0.0*direction));
 
-            } else if (colour == black) {
+            } else if (colour == 0) {
                 tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 1.0));
                 tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0*direction, 0.3*direction, 0.0*direction));
 

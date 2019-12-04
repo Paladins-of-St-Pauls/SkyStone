@@ -1,5 +1,6 @@
 package org.baconeers.Tasks;
 
+import com.qualcomm.hardware.ams.AMSColorSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -28,18 +29,10 @@ public class TaskTestOpMode extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
-        tasks.add(new FoundationTask(this, 5.0, config, 0.0));
-        tasks.add(new FoundationTask(this, 5.0, config, position));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.09));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.08));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.07));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.06));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.05));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.04));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.03));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.02));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.01));
-        tasks.add(new FoundationTask(this, 5.0, config, 0.00));
+        tasks.add(new SkystoneServoTask(this, 0.5, config, 0.0));
+        tasks.add(new WaitTask(this, 5.0));
+        tasks.add(new SkystoneServoTask(this, 0.5, config, 1.0));
+        tasks.add(new WaitTask(this, 5.0));
 
     }
 
