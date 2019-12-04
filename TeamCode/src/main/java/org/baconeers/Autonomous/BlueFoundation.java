@@ -3,6 +3,7 @@ package org.baconeers.Autonomous;
 import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
 import org.baconeers.Tasks.DriveXYRTask;
+import org.baconeers.Tasks.FoundationTask;
 import org.baconeers.Tasks.Task;
 import org.baconeers.common.BaconOpMode;
 
@@ -25,6 +26,14 @@ public class BlueFoundation extends BaconOpMode {
                 false);
 
         tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
+        tasks.add(new FoundationTask(this, 1.0, config,0.0));
+        tasks.add(new DriveXYRTask(this, 1.62, mecanumDrive, 0.3, 0.0, 0.0));
+        tasks.add(new DriveXYRTask(this, 0.5, mecanumDrive, 0.0, 0.0, -0.3));
+        tasks.add(new FoundationTask(this, 1.0, config, 1.0));
+        tasks.add(new DriveXYRTask(this, 2.0, mecanumDrive, 0.0, -0.3, 0.0));
+        tasks.add(new DriveXYRTask(this, 0.5, mecanumDrive, 0.0, 0.0, -0.3));
+
+        
 
 
 
