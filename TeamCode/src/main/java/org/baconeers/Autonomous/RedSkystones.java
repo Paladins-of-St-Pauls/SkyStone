@@ -2,6 +2,7 @@ package org.baconeers.Autonomous;
 
 import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
 import org.baconeers.SkystoneDrive.SkystoneConfiguration;
+import org.baconeers.Tasks.DetectSkystoneTask;
 import org.baconeers.Tasks.DriveXYRTask;
 import org.baconeers.Tasks.Task;
 import org.baconeers.common.BaconOpMode;
@@ -15,6 +16,7 @@ public class RedSkystones extends BaconOpMode {
     private SkystoneConfiguration config;
     private NormalisedMecanumDrive mecanumDrive = null;
     private ArrayDeque<Task> tasks = new ArrayDeque<>();
+    private int stoneCount = 1;
 
     @Override
     protected void onInit() {
@@ -24,7 +26,9 @@ public class RedSkystones extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
+        //Pseudo-code type autonomous until distances are calculated
         tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
+        tasks.add(new DetectSkystoneTask(this, 2.0, config, tasks, stoneCount));
 
     }
 

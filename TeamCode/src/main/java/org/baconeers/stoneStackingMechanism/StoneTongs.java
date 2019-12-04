@@ -35,7 +35,7 @@ public class StoneTongs extends BaconComponent {
         } else if (bCurrentState) {
             config.movementServo.setPosition(1.0);
         }
-        
+
         //aPrevState = aCurrentState;
         //bPrevState = bCurrentState;
 

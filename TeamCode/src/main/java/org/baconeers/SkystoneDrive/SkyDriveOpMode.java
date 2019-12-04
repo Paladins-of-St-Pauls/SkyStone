@@ -49,7 +49,7 @@ public class SkyDriveOpMode extends BaconOpMode {
 
         try {
             harvester = new GamePadToggleDualMotor(this, gamepad1,
-                    config.HarvesterLeft, config.HarvesterRight,
+                    config.harvesterLeft, config.harvesterRight,
                     ButtonControl.Y, ButtonControl.RIGHT_BUMPER, 1.0f);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise mecanum drive");
@@ -63,21 +63,21 @@ public class SkyDriveOpMode extends BaconOpMode {
         }
 
         try {
-            harvesterServoLeft = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoLeft,
+            harvesterServoLeft = new GamePadToggle2positionServo(this ,gamepad2, config.harvesterServoLeft,
                     ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 0.0, 1.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise capstoneMech");
         }
 
         try {
-            harvesterServoRight = new GamePadToggle2positionServo(this ,gamepad2, config.HarvesterServoRight,
+            harvesterServoRight = new GamePadToggle2positionServo(this ,gamepad2, config.harvesterServoRight,
                     ButtonControl.DPAD_UP, ButtonControl.DPAD_DOWN, 1.0, 0.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise capstoneMech");
         }
 
         try {
-            foundationServo = new GamePadToggle2positionServo(this, gamepad1, config.FoundationServo,
+            foundationServo = new GamePadToggle2positionServo(this, gamepad1, config.foundationServo,
                     ButtonControl.A, ButtonControl.B, 0.0, 1.0);
         } catch (Exception e) {
             telemetry.addLine("Failed to initialise foundationServo");

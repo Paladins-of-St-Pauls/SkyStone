@@ -17,8 +17,8 @@ public class HarvesterServoTask extends BaseTask implements Task {
     }
 
     void update() {
-         config.HarvesterServoRight.setPosition(harvesterPosition);
-         config.HarvesterServoLeft.setPosition(-harvesterPosition);
+         config.harvesterServoRight.setPosition(harvesterPosition);
+         config.harvesterServoLeft.setPosition(-harvesterPosition);
 
     }
 

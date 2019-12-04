@@ -1,6 +1,7 @@
 package org.baconeers.SkystoneDrive;
 
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -22,15 +23,18 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public DcMotor backLeftMotor = null;
     public DcMotor backRightMotor = null;
     public DcMotor liftMotor = null;
-    public DcMotor HarvesterRight = null;
-    public DcMotor HarvesterLeft = null;
+    public DcMotor harvesterLeft = null;
+    public DcMotor harvesterRight = null;
+
     public CRServo gripServo = null; // Grips the stone
     public Servo movementServo = null; // Moves the stone tongs
     public Servo CapStoneServo = null; // Capstone servo
-    public Servo HarvesterServoRight = null;
-    public Servo HarvesterServoLeft = null;
-    public Servo FoundationServo = null;
+    public Servo harvesterServoLeft = null;
+    public Servo harvesterServoRight = null;
+    public Servo foundationServo = null;
+
     public Camera Cam = null;
+    public ColorSensor colourSensor;
 
 
     /**
@@ -85,12 +89,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine(e.getMessage());
         }
         try {
-            HarvesterLeft = hardwareMap.get(DcMotor.class, "HarvesterLeftMotor");
+            harvesterLeft = hardwareMap.get(DcMotor.class, "HarvesterLeftMotor");
         } catch (Exception e) {
             telemetry.addLine("HarvesterLeftMotor failed to configure");
         }
         try {
-            HarvesterRight = hardwareMap.get(DcMotor.class, "HarvesterRightMotor");
+            harvesterRight = hardwareMap.get(DcMotor.class, "HarvesterRightMotor");
         } catch (Exception e) {
             telemetry.addLine("HarvesterRightMotor failed to configure");
         }
@@ -122,12 +126,12 @@ public class SkystoneConfiguration extends RobotConfiguration {
             backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
 
-        if (HarvesterRight != null && HarvesterLeft != null ) {
-            HarvesterRight.setDirection(DcMotor.Direction.FORWARD);
-            HarvesterLeft.setDirection(DcMotor.Direction.REVERSE);
+        if (harvesterRight != null && harvesterLeft != null ) {
+            harvesterRight.setDirection(DcMotor.Direction.FORWARD);
+            harvesterLeft.setDirection(DcMotor.Direction.REVERSE);
 
-            HarvesterRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            HarvesterLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            harvesterRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+            harvesterLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         }
 
@@ -137,17 +141,17 @@ public class SkystoneConfiguration extends RobotConfiguration {
             telemetry.addLine("CapStone failed to configure");
         }
         try {
-            HarvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
+            harvesterServoLeft = hardwareMap.get(Servo.class, "HarvesterServoLeft");
         } catch (Exception e) {
             telemetry.addLine("HarvesterServoLeft failed to configure");
         }
         try {
-            HarvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
+            harvesterServoRight = hardwareMap.get(Servo.class, "HarvesterServoRight");
         } catch (Exception e) {
             telemetry.addLine("HarvesterServoRight failed to configure");
         }
         try {
-            FoundationServo = hardwareMap.get(Servo.class, "FoundationServo");
+            foundationServo = hardwareMap.get(Servo.class, "FoundationServo");
         } catch (Exception e) {
             telemetry.addLine("FoundationServo failed to configure");
         }

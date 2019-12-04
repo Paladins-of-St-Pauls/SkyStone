@@ -26,8 +26,8 @@ public class HarvesterMotorTask extends BaseTask implements Task    {
     }
 
     void update() {
-         config.HarvesterServoRight.setPosition(harvesterPower);
-         config.HarvesterServoLeft.setPosition(harvesterPower);
+         config.harvesterServoRight.setPosition(harvesterPower);
+         config.harvesterServoLeft.setPosition(harvesterPower);
 
     }
 
