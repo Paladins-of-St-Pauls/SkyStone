@@ -32,6 +32,7 @@ public class SkystoneConfiguration extends RobotConfiguration {
     public Servo harvesterServoLeft = null;
     public Servo harvesterServoRight = null;
     public Servo foundationServo = null;
+    public Servo skystoneServo = null;
 
     public Camera Cam = null;
     public ColorSensor colourSensor;
@@ -103,6 +104,11 @@ public class SkystoneConfiguration extends RobotConfiguration {
         } catch (Exception e) {
             telemetry.addLine("Camera failed to configure");
         }
+        try {
+            colourSensor = hardwareMap.get(ColorSensor.class, "ColourSensor");
+        } catch (Exception e) {
+            telemetry.addLine("ColourSensor failed to configure");
+        }
 
         if (frontLeftMotor != null && frontRightMotor != null && backLeftMotor != null && backRightMotor != null) {
             frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -154,6 +160,11 @@ public class SkystoneConfiguration extends RobotConfiguration {
             foundationServo = hardwareMap.get(Servo.class, "FoundationServo");
         } catch (Exception e) {
             telemetry.addLine("FoundationServo failed to configure");
+        }
+        try {
+            skystoneServo = hardwareMap.get(Servo.class, "SkystoneServo");
+        } catch (Exception e) {
+            telemetry.addLine("SkystoneServo failed to configure");
         }
 
 //        Iterator<HardwareMap.DeviceMapping<? extends HardwareDevice>> iter  = hardwareMap.allDeviceMappings.iterator();

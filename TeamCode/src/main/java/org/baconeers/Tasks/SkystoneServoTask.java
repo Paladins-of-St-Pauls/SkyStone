@@ -6,17 +6,17 @@ import org.baconeers.common.BaconOpMode;
 public class SkystoneServoTask extends BaseTask implements Task {
 
     private final SkystoneConfiguration config;
-    private double skystoneServoPosition;
+    private double position;
 
-    public SkystoneServoTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double skystoneServoPosition) {
+    public SkystoneServoTask(BaconOpMode opMode, double time, SkystoneConfiguration config, double position) {
         super(opMode, time);
         this.config = config;
-        this.skystoneServoPosition = skystoneServoPosition;
+        this.position = position;
 
     }
 
     void update() {
-         config.harvesterServoRight.setPosition(skystoneServoPosition);
+         config.skystoneServo.setPosition(position);
 
     }
 

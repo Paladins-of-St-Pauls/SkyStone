@@ -28,7 +28,13 @@ public class RedFoundation extends BaconOpMode {
                 config.backLeftMotor, config.backRightMotor,
                 false);
 
-        tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
+        tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0.0, 0.0));
+        tasks.add(new FoundationTask(this, 1.0, config, 0.0));
+        tasks.add(new DriveXYRTask(this, 1.62, mecanumDrive, 0.3, 0.0, 0.0));
+        tasks.add(new DriveXYRTask(this, 0.5, mecanumDrive, 0.0, 0.0, 0.3));
+        tasks.add(new FoundationTask(this, 1.0, config, 1.0));
+        tasks.add(new DriveXYRTask(this, 2.0, mecanumDrive, 0.0, 0.3, 0.0));
+        tasks.add(new DriveXYRTask(this, 0.5, mecanumDrive, 0.0, 0.0, 0.3));
 
     }
 

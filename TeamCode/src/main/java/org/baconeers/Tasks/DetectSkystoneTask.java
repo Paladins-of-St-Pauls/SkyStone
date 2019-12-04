@@ -16,12 +16,14 @@ public class DetectSkystoneTask extends BaseTask implements Task {
     private NormalisedMecanumDrive mecanumDrive = null;
     private int stoneCount;
     private double colour;
+    private int direction;
 
-    public DetectSkystoneTask(BaconOpMode opMode, double time, SkystoneConfiguration config, ArrayDeque<Task> tasks, int stoneCount) {
+    public DetectSkystoneTask(BaconOpMode opMode, double time, SkystoneConfiguration config, ArrayDeque<Task> tasks, int stoneCount, int direction) {
         super(opMode, time);
         this.config = config;
         this.tasks = tasks;
         this.stoneCount = stoneCount;
+        this.direction = direction;
 
         mecanumDrive = new NormalisedMecanumDrive(opMode,
                 config.frontLeftMotor, config.frontRightMotor,
@@ -41,24 +43,22 @@ public class DetectSkystoneTask extends BaseTask implements Task {
             //Pseudo-code for detecting stones until colour sensor is coded
             if (colour == yellow && stoneCount < 6) {
                 stoneCount += 1;
-                tasks.addFirst(new DetectSkystoneTask(opMode, 2.0, config, tasks, stoneCount));
-                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive, -0.3, 0.0, 0.0));
+                tasks.addFirst(new DetectSkystoneTask(opMode, 2.0, config, tasks, stoneCount,1));
+                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive, 0.3*direction, 0.0*direction, 0.0*direction));
 
             } else if (colour == yellow && stoneCount == 6) {
                 tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 1.0));
-                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0, -0.3, 0.0));
-                tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 0.0));
+                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0*direction, 0.3*direction, 0.0*direction));
 
             } else if (colour == black) {
                 tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 1.0));
-                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0, -0.3, 0.0));
-                tasks.addFirst(new SkystoneServoTask(opMode, 1.0, config, 0.0));
-            }
+                tasks.addFirst(new DriveXYRTask(opMode, 2.0, mecanumDrive,0.0*direction, 0.3*direction, 0.0*direction));
 
+            }
 
             return;
         }
-        // code here
+        update();
 
     }
 

@@ -27,8 +27,10 @@ public class RedSkystones extends BaconOpMode {
                 false);
 
         //Pseudo-code type autonomous until distances are calculated
-        tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, -0.3, 0, 0));
-        tasks.add(new DetectSkystoneTask(this, 2.0, config, tasks, stoneCount));
+        tasks.add(new DriveXYRTask(this, 1.82, mecanumDrive, 0.3, 0, 0));
+        tasks.add(new DetectSkystoneTask(this, 2.0, config, tasks, stoneCount, 1));
+        tasks.add(new DriveXYRTask(this, 2.0, mecanumDrive, 0.0, 0.0, 0.3));
+        tasks.add(new DriveXYRTask(this, 5.0, mecanumDrive, 0.3, 0.0, 0.0));
 
     }
 
