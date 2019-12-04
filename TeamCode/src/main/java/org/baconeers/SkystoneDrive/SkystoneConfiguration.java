@@ -75,6 +75,9 @@ public class SkystoneConfiguration extends RobotConfiguration {
         }
         try {
             movementServo = hardwareMap.get(Servo.class, "MovementServo");
+            if (movementServo != null) {
+                movementServo.setPosition(0.0);
+            }
         } catch (Exception e) {
             telemetry.addLine("movementServo failed to configure");
         }

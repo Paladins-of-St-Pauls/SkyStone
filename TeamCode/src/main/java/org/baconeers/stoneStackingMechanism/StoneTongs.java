@@ -23,7 +23,7 @@ public class StoneTongs extends BaconComponent {
     }
 
     public void update() {
-        
+
         // Grab/release the stone
         boolean aCurrentState = opmode.gamepad2.a;
         boolean bCurrentState = opmode.gamepad2.b;
@@ -35,9 +35,9 @@ public class StoneTongs extends BaconComponent {
 //        config.gripServo.setPower(gripServoPower);
 
         if (aCurrentState) {
-            config.movementServo.setPosition(0.0);
-        } else if (bCurrentState) {
             config.movementServo.setPosition(1.0);
+        } else if (bCurrentState) {
+            config.movementServo.setPosition(0.0);
         }
 
         if (leftBumperState) {
