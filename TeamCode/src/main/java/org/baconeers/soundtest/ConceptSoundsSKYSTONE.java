@@ -86,10 +86,11 @@ public class ConceptSoundsSKYSTONE extends LinearOpMode {
             }
             was_dpad_down = gamepad1.a;
 
-            if (gamepad1.dpad_up && !was_dpad_up) {
+            if (gamepad1.b && !was_dpad_up) {
                 // Go to previous sound (with list wrap) and display it
                 soundIndex = (soundIndex + sounds.length - 1) % sounds.length;
             }
+            was_dpad_up = gamepad1.b;
 
             // Look for trigger to see if we should play sound
             // Only start a new sound if we are currently not playing one.
@@ -111,11 +112,11 @@ public class ConceptSoundsSKYSTONE extends LinearOpMode {
             }
 
             // Remember the last state of the dpad to detect changes.
-            was_dpad_up     = gamepad1.dpad_up;
+
 //            was_dpad_down   = gamepad1.dpad_down;
 
             // Display the current sound choice, and the playing status.
-            telemetry.addData("", "Use DPAD up/down to choose sound.");
+            telemetry.addData("", "Use A/B to choose sound.");
             telemetry.addData("", "Press Right Bumper to play sound.");
             telemetry.addData("", Integer.toString(count));
             telemetry.addData("Sound >", sounds[soundIndex]);
