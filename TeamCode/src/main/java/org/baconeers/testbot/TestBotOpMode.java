@@ -22,8 +22,14 @@ public class TestBotOpMode extends BaconOpMode {
     protected void activeLoop() throws InterruptedException {
         drive.update();
 
-        if (config.touchSensor.isPressed()) {
-            telemetry.addLine("Touch pressed");
-        }
+//        if (config.touchSensor.isPressed()) {
+//            telemetry.addLine("Touch pressed");
+//            config.leftMotor.setPower(0.3);
+//            config.rightMotor.setPower(0.0);
+//        } else {
+//            config.leftMotor.setPower(0.0);
+//            config.rightMotor.setPower(0.3);
+//
+//        }
     }
 }

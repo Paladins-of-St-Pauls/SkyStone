@@ -58,8 +58,8 @@ public class GamePadSteerDrive extends BaconComponent {
             rightPower = scalePower * ((steer > 0) ? 1.0f - steer : 1.0f);
         }
 
-        leftMotor.setPower(leftPower);
-        rightMotor.setPower(rightPower);
+        leftMotor.setPower(-leftPower);
+        rightMotor.setPower(-rightPower);
 
         leftPowerItem.setValue("%.2f", leftPower);
         rightPowerItem.setValue("%.2f", rightPower);
@@ -71,7 +71,7 @@ public class GamePadSteerDrive extends BaconComponent {
             {0.00f, 0.1f, 0.3f, 0.7f, 1.0f, 1.0f };
 
     /**
-     * The DC motors are scaled to make it easier to control them at slower speeds
+     * The  DC motors are scaled to make it easier to control them at slower speeds
      * The clip method guarantees the value never exceeds the range 0-1.
      */
     private float scaleTriggerPower(float power) {

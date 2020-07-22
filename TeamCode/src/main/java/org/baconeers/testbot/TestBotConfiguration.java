@@ -38,12 +38,12 @@ public class TestBotConfiguration extends RobotConfiguration {
 
         setTelemetry(telemetry);
 
-        leftMotor = (DcMotor) getHardwareOn("LeftMotor", hardwareMap.dcMotor);
+        leftMotor = (DcMotor) getHardwareOn("NeveRest20", hardwareMap.dcMotor);
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        rightMotor = (DcMotor) getHardwareOn("RightMotor", hardwareMap.dcMotor);
+        rightMotor = (DcMotor) getHardwareOn("GoBilda5202", hardwareMap.dcMotor);
 
-        touchSensor = (TouchSensor)getHardwareOn("Touch1", hardwareMap.touchSensor);
+        touchSensor = (TouchSensor)getHardwareOn("RevTouchSensor", hardwareMap.touchSensor);
 
 //        sorterColorSensor = hardwareMap.colorSensor.get("color");
 //        sorterServo = hardwareMap.servo.get("servo");
