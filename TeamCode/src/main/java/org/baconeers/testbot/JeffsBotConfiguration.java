@@ -43,7 +43,7 @@ public class JeffsBotConfiguration extends RobotConfiguration {
 
         rightMotor = (DcMotor) getHardwareOn("rightMotor", hardwareMap.dcMotor);
 
-        touchSensor = (TouchSensor)getHardwareOn("RevTouchSensor", hardwareMap.touchSensor);
+//        touchSensor = (TouchSensor)getHardwareOn("RevTouchSensor", hardwareMap.touchSensor);
 
 //        sorterColorSensor = hardwareMap.colorSensor.get("color");
 //        sorterServo = hardwareMap.servo.get("servo");
