@@ -1,4 +1,4 @@
-package org.baconeers.testbot;
+package org.baconeers.jeffs;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -15,17 +15,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * It is also assumed that the device names in the 'init()' method below are the same as the devices
  * named on the activated configuration on the robot.
  */
-public class TestBotConfiguration extends RobotConfiguration {
-       // Left motors
+public class JeffsBotConfiguration extends RobotConfiguration {
+    // Left motors
     public DcMotor leftMotor;
     public DcMotor rightMotor;
-
-    public TouchSensor touchSensor;
-
-
-    public ColorSensor sorterColorSensor;
-//    public Servo sorterServo;
-//    public CRServo blueCRServo;
 
     /**
      * Assign your class instance variables to the saved device names in the hardware map
@@ -38,18 +31,11 @@ public class TestBotConfiguration extends RobotConfiguration {
 
         setTelemetry(telemetry);
 
-        leftMotor = (DcMotor) getHardwareOn("NeveRest20", hardwareMap.dcMotor);
+        leftMotor = (DcMotor) getHardwareOn("leftMotor", hardwareMap.dcMotor);
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        rightMotor = (DcMotor) getHardwareOn("GoBilda5202", hardwareMap.dcMotor);
+        rightMotor = (DcMotor) getHardwareOn("rightMotor", hardwareMap.dcMotor);
 
-        touchSensor = (TouchSensor)getHardwareOn("RevTouchSensor", hardwareMap.touchSensor);
-
-//        sorterColorSensor = hardwareMap.colorSensor.get("color");
-//        sorterServo = hardwareMap.servo.get("servo");
-//
-//        blueCRServo = hardwareMap.crservo.get("BackServo");
-//        redCRServo = hardwareMap.crservo.get("LeftServo");
     }
 
 
@@ -60,9 +46,9 @@ public class TestBotConfiguration extends RobotConfiguration {
      * @param telemetry
      * @return
      */
-    public static TestBotConfiguration newConfig(HardwareMap hardwareMap, Telemetry telemetry) {
+    public static JeffsBotConfiguration newConfig(HardwareMap hardwareMap, Telemetry telemetry) {
 
-        TestBotConfiguration config = new TestBotConfiguration();
+        JeffsBotConfiguration config = new JeffsBotConfiguration();
         config.init(hardwareMap, telemetry);
         return config;
     }

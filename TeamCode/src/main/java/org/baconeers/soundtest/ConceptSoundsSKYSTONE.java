@@ -48,7 +48,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  *      Use the DPAD to change the selected sound, and the Right Bumper to play it.
  */
 
-@TeleOp(name="SKYSTONE Sounds", group="Concept")
+@TeleOp (name="SKYSTONE Sounds", group="Concept")
 //@Disabled
 public class ConceptSoundsSKYSTONE extends LinearOpMode {
 
@@ -79,18 +79,18 @@ public class ConceptSoundsSKYSTONE extends LinearOpMode {
         while (!isStopRequested()) {
             count++;
             // Look for DPAD presses to change the selection
-            if ((gamepad1.a) && !was_dpad_down) {
+            if ((gamepad1.x) && !was_dpad_down) {
                 // Go to next sound (with list wrap) and display it
                 soundIndex = (soundIndex + 1) % sounds.length;
                 count=0;
             }
-            was_dpad_down = gamepad1.a;
+            was_dpad_down = gamepad1.x;
 
-            if (gamepad1.b && !was_dpad_up) {
+            if (gamepad1.y && !was_dpad_up) {
                 // Go to previous sound (with list wrap) and display it
                 soundIndex = (soundIndex + sounds.length - 1) % sounds.length;
             }
-            was_dpad_up = gamepad1.b;
+            was_dpad_up = gamepad1.y;
 
             // Look for trigger to see if we should play sound
             // Only start a new sound if we are currently not playing one.
@@ -116,7 +116,7 @@ public class ConceptSoundsSKYSTONE extends LinearOpMode {
 //            was_dpad_down   = gamepad1.dpad_down;
 
             // Display the current sound choice, and the playing status.
-            telemetry.addData("", "Use A/B to choose sound.");
+            telemetry.addData("", "Use X/Y to cycle sound.");
             telemetry.addData("", "Press Right Bumper to play sound.");
             telemetry.addData("", Integer.toString(count));
             telemetry.addData("Sound >", sounds[soundIndex]);

@@ -1,12 +1,13 @@
-package org.baconeers.testbot;
+package org.baconeers.jeffs;
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.baconeers.common.BaconOpMode;
 import org.baconeers.common.GamePadSteerDrive;
+import org.baconeers.testbot.JeffsBotConfiguration;
 
-@TeleOp(name = "TestBotOpMode")
-public class TestBotOpMode extends BaconOpMode {
+@Autonomous(name = "JeffsAutonomousOpMode")
+public class JeffsAutonomousOpMode extends BaconOpMode {
     private JeffsBotConfiguration config;
     private GamePadSteerDrive drive;
 
