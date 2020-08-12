@@ -21,7 +21,7 @@ public class JeffsTeleOpTankDrive extends BaconOpMode {
 
     @Override
     protected void activeLoop() throws InterruptedException {
-        drive.setPower(-gamepad1.left_stick_y, gamepad1.right_stick_y);
+        drive.setPower(-gamepad1.left_stick_y, -gamepad1.right_stick_y);
         drive.update();
     }
 }

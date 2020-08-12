@@ -47,8 +47,8 @@ public class TankDrive extends BaconComponent {
      * Update the motor power based on the gamepad state
      */
     public void update() {
-        leftMotor.setPower(leftPower);
-        rightMotor.setPower(rightPower);
+        leftMotor.setPower(-leftPower);
+        rightMotor.setPower(-rightPower);
 
         leftPowerItem.setValue("%.2f", leftPower);
         rightPowerItem.setValue("%.2f", rightPower);

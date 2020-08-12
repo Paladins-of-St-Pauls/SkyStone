@@ -44,7 +44,7 @@ public class GamePadSteerDrive extends BaconComponent {
     public void update() {
 
 //        float scalePower = scaleTriggerPower(gamepad.left_trigger - gamepad.right_trigger);
-        float scalePower = scaleTriggerPower(gamepad.left_stick_y);
+        float scalePower = scaleTriggerPower(-gamepad.left_stick_y);
 
         float steer = scaleSteerPower(gamepad.right_stick_x);
         float leftPower;
