@@ -8,6 +8,11 @@ public class DrivePolarRTask implements Task {
     }
 
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public void run() {
 
     }

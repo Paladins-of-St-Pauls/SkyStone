@@ -24,12 +24,18 @@ public abstract class BaseTask implements Task {
     }
 
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public boolean isFinished() {
         if (isFinished) {
             return isFinished;
         }
 
         if (startTime == 0) {
+            init();
             startTime = getCurrentTime();
         }
         if (getCurrentTime() > (startTime + time)) {

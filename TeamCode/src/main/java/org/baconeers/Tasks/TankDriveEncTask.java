@@ -1,26 +1,37 @@
 package org.baconeers.Tasks;
 
-import org.baconeers.SkystoneDrive.NormalisedMecanumDrive;
 import org.baconeers.common.BaconOpMode;
 import org.baconeers.common.TankDrive;
 
-public class TankDriveTask extends BaseTask implements Task {
+public class TankDriveEncTask extends BaseTask implements Task {
 
     private final TankDrive drive;
     private final double leftSpeed;
     private final double rightSpeed;
 
-    public TankDriveTask(BaconOpMode opMode, double time, TankDrive drive, double leftSpeed, double rightSpeed) {
+    private final double leftCm;
+    private final double rightCm;
+
+    public TankDriveEncTask(BaconOpMode opMode, double time, TankDrive drive, double leftSpeed, double rightSpeed, double leftCm, double rightCm) {
         super(opMode, time);
         this.drive = drive;
         this.leftSpeed = leftSpeed;
         this.rightSpeed = rightSpeed;
+
+        this.leftCm = leftCm;
+        this.rightCm = rightCm;
     }
 
     @Override
     public void init() {
         super.init();
-        drive.setEncoderMode(false);
+        drive.setPosition(leftCm,rightCm);
+        drive.setEncoderMode(true);
+    }
+
+    @Override
+    public boolean isFinished() {
+        return super.isFinished() || drive.isFinished();
     }
 
     @Override
