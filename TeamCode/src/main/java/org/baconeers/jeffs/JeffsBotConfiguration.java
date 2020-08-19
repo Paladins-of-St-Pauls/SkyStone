@@ -20,6 +20,12 @@ public class JeffsBotConfiguration extends RobotConfiguration {
     public DcMotor leftMotor;
     public DcMotor rightMotor;
 
+    public double countsPerMotorRev = 1440;
+    public double driveGearReduction = 90.0/72.0; // 90 Teeth -> 72 Teeth
+    public double wheelDiameterCm = 9.0;
+
+    public double countsPerCm = (countsPerMotorRev * driveGearReduction)/(wheelDiameterCm * 3.14159);
+
     /**
      * Assign your class instance variables to the saved device names in the hardware map
      *
@@ -32,10 +38,9 @@ public class JeffsBotConfiguration extends RobotConfiguration {
         setTelemetry(telemetry);
 
         leftMotor = (DcMotor) getHardwareOn("leftMotor", hardwareMap.dcMotor);
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         rightMotor = (DcMotor) getHardwareOn("rightMotor", hardwareMap.dcMotor);
-
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
 
