@@ -23,10 +23,23 @@ public class JeffsAutonomousOpMode extends BaconOpMode {
         config = JeffsBotConfiguration.newConfig(hardwareMap, telemetry);
 
         drive = new TankDrive(this, gamepad1, config.leftMotor, config.rightMotor);
-        tasks.add(new TankDriveTask(this, 1.82, drive, 0.3, 0));
-        tasks.add(new TankDriveTask(this, 1.82, drive, 0, 0.3));
-        tasks.add(new TankDriveTask(this, 3, drive, 1, 1));
-        tasks.add(new TankDriveTask(this, 2  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 5, drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5, drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 1, drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 1.5 , drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 1.5  , drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 1.5  , drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 2  , drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0.5  , drive, 1, -1));
+        tasks.add(new TankDriveTask(this, 6  , drive, 1, 1));
+        tasks.add(new TankDriveTask(this, 0  , drive, 0, 0));
+        tasks.add(new TankDriveTask(this, 0  , drive, 0, 0));
+        tasks.add(new TankDriveTask(this, 0  , drive, 0, 0));
+        tasks.add(new TankDriveTask(this, 0  , drive, 0, 0));
     }
 
     @Override
