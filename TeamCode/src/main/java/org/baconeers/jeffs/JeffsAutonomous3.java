@@ -10,7 +10,7 @@ import org.baconeers.common.TankDrive;
 
 import java.util.ArrayDeque;
 
-@Autonomous(name = "JeffsAutonomousEncoder")
+@Autonomous(name = "JeffsAutonomous3")
 public class JeffsAutonomous3 extends BaconOpMode {
     private JeffsBotConfiguration config;
     private TankDrive drive;
@@ -25,9 +25,9 @@ public class JeffsAutonomous3 extends BaconOpMode {
         config.leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         config.rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         tasks.add(new TankDriveEncTask(this, 0.5, drive, 0.2, 0.2, 20, 20));
-        tasks.add(new TankDriveEncTask(this, 10, drive, 0.6, 0.5, 300, 300));
-        tasks.add(new TankDriveEncTask(this, 20, drive, 0.8, 0.5, 50, 20));
-        tasks.add(new TankDriveEncTask(this, 10, drive, 0.6, 0.5, 300, 300));
+        tasks.add(new TankDriveEncTask(this, 6, drive, 0.8, 0.8, 200, 200));
+        tasks.add(new TankDriveEncTask(this, 3, drive, 0.8, 0.5, 50, 20));
+        tasks.add(new TankDriveEncTask(this, 7, drive, 0.8, 0.8, 300, 300));
     }
 
     @Override
