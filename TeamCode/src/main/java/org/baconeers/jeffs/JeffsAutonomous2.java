@@ -3,18 +3,15 @@ package org.baconeers.jeffs;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.baconeers.Tasks.DriveXYRTask;
-import org.baconeers.Tasks.TankDriveTask;
+import org.baconeers.Tasks.TankDriveEncTask;
 import org.baconeers.Tasks.Task;
 import org.baconeers.common.BaconOpMode;
-import org.baconeers.common.GamePadSteerDrive;
 import org.baconeers.common.TankDrive;
-import org.baconeers.testbot.JeffsBotConfiguration;
 
 import java.util.ArrayDeque;
 
-@Autonomous(name = "JeffsAutonomousOpMode")
-public class JeffsAutonomousOpMode extends BaconOpMode {
+@Autonomous(name = "JeffsAutonomousEncoder")
+public class JeffsAutonomous2 extends BaconOpMode {
     private JeffsBotConfiguration config;
     private TankDrive drive;
     private ArrayDeque<Task> tasks = new ArrayDeque<>();
@@ -22,11 +19,13 @@ public class JeffsAutonomousOpMode extends BaconOpMode {
     @Override
     protected void onInit() {
         config = JeffsBotConfiguration.newConfig(hardwareMap, telemetry);
-        config.leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        config.rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         drive = new TankDrive(this, gamepad1, config.leftMotor, config.rightMotor);
-        tasks.add(new TankDriveTask(this, 20, drive, -0.7, -0.7));
+        drive.setCountsPerCm(config.countsPerCm);
+        config.leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        config.rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        tasks.add(new TankDriveEncTask(this, 0.5, drive, 0.2, 0.2, 20, 20));
+        tasks.add(new TankDriveEncTask(this, 5, drive, 0.8, 0.5, 50, 20));
     }
 
     @Override
@@ -38,6 +37,7 @@ public class JeffsAutonomousOpMode extends BaconOpMode {
         currentTask.run();
         if (currentTask.isFinished()){
             tasks.removeFirst();
+
         }
         if (tasks.isEmpty()) {
             drive.setPower(0, 0);

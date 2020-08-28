@@ -24,7 +24,7 @@ public class JeffsBotConfiguration extends RobotConfiguration {
     public double driveGearReduction = 90.0/72.0; // 90 Teeth -> 72 Teeth
     public double wheelDiameterCm = 9.0;
 
-    public double countsPerCm = (countsPerMotorRev * driveGearReduction)/(wheelDiameterCm * 3.14159);
+    public double countsPerCm = (countsPerMotorRev * driveGearReduction)/(wheelDiameterCm * 3.14159) * (2.0/3.4);
 
     /**
      * Assign your class instance variables to the saved device names in the hardware map
