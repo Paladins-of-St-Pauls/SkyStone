@@ -66,6 +66,9 @@ public class TankDrive extends BaconComponent {
             leftMotor.setTargetPosition(newLeftTicks);
             rightMotor.setTargetPosition(newRightTicks);
 
+            leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
             leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         } else {
@@ -97,6 +100,8 @@ public class TankDrive extends BaconComponent {
 
         leftPowerItem.setValue("%.2f", leftPower);
         rightPowerItem.setValue("%.2f", rightPower);
+
+        getOpMode().telemetry.addLine(String.format("%d, %d", leftMotor.getCurrentPosition(), rightMotor.getCurrentPosition()));
     }
 
     private static float[] power_curve =
